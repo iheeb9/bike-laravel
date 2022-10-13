@@ -1,0 +1,92 @@
+{
+  "menu": [
+    {
+      "url": "/admin/home",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "menuHeader": "Pages"
+    },
+	 {
+      "name": "Velo",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#"
+    },
+	{
+      "name": "Location",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#"
+    },
+	{
+      "name": "Balade",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#"
+    },
+	{
+      "name": "Assosiation",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#"
+    },
+	{
+      "name": "Blog",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#"
+    },
+	{
+      "name": "Evennnements",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+      "name": "Liste deroulante leliyheb ( fichier side bar fi resource / menu)",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "pages-account-settings",
+      "submenu": [
+        {
+          "url": "#",
+          "name": "example",
+          "slug": "pages-account-settings-account"
+        }
+      ]
+    }
+    
+  ]
+}
