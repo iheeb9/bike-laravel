@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('informations', function (Blueprint $table) {
-            $table->id();
-            $table->string('nom');
-            $table->timestamps();
-            $table->foreignId('location_id')->constrained()
+        Schema::table('locations', function (Blueprint $table) {
+            $table->foreignId('velo_id')->constrained()
             ->onDelete('restrict')
             ->onUpdate('restrict');
-
-
+            //
         });
     }
 
@@ -32,6 +28,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('informations');
+        Schema::table('locations', function (Blueprint $table) {
+            $table->dropColumn('velo_id');
+            //
+        });
     }
 };

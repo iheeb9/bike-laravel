@@ -9,10 +9,10 @@ class Velo extends Model
 {
     use HasFactory;
 
-  public function Information()
-  {
-    return $this->hasMany(Information::class);
-  }
+  public function Locations()
+    {
+      return $this->hasMany(Location::class);
+    }
   public function Category()
   {
     return $this->belongsTo(Category::class);

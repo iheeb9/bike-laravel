@@ -14,8 +14,8 @@ class Location extends Model
   {
     return $this->belongsTo(User::class);
   }
-  public function Informations()
+  public function Velo()
   {
-    return $this->hasMany(Information::class);
+    return $this->belongsTo(Velo::class);
   }
 }
