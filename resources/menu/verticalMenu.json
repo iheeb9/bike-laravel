@@ -18,8 +18,8 @@
 	{
       "name": "Location",
       "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "#",
-      "url": "#"
+      "slug": "view-location-back",
+      "url": "/admin/location"
     },
 	{
       "name": "Balade",
