@@ -9,6 +9,13 @@ class Velo extends Model
 {
     use HasFactory;
 
+
+
+
+
+
+
+
   public function Locations()
     {
       return $this->hasMany(Location::class);

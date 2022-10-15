@@ -24,8 +24,8 @@
 	{
       "name": "Balade",
       "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "#",
-      "url": "#"
+      "slug": "balade.index",
+      "url": "admin/balade"
     },
 	{
       "name": "Assosiation",
@@ -87,6 +87,6 @@
         }
       ]
     }
-    
+
   ]
 }

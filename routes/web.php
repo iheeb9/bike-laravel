@@ -17,9 +17,8 @@ $controller_path = 'App\Http\Controllers';
 
 // Admin Route
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
-
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
-
+  Route::resource('balade', \App\Http\Controllers\balade\BaladeController::class);
 });
 
 //Client Route
@@ -85,7 +84,7 @@ Route::get('/icons/boxicons', $controller_path . '\icons\Boxicons@index')->name(
 
 // form elements
 Route::get('/forms/basic-inputs', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs');
-Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
+  Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
 
 // form layouts
 Route::get('/form/layouts-vertical', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');
