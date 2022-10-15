@@ -16,7 +16,13 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->timestamps();
+          $table->string('slug');
+          $table->longText('description');
+          $table->string('meta_title');
+          $table->string('meta_keyword');
+          $table->string('meta_description');
+          $table->tinyInteger('status')->default('0')->comment('0=visible,1=hidden');
+          $table->timestamps();
         });
     }
 

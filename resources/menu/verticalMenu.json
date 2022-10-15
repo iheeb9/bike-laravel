@@ -15,6 +15,24 @@
       "slug": "#",
       "url": "#"
     },
+    {
+      "name": "Categories",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#",
+      "submenu": [
+        {
+          "url": "/admin/category",
+          "name": "Liste Categorie",
+          "slug": "extended-ui-perfect-scrollbar"
+        },
+        {
+          "url": "/admin/category/create",
+          "name": "Ajouter categories",
+          "slug": "extended-ui-perfect-scrollbar"
+        }
+      ]
+    },
 	{
       "name": "Location",
       "icon": "menu-icon tf-icons bx bx-collection",
@@ -87,6 +105,6 @@
         }
       ]
     }
-    
+
   ]
 }
