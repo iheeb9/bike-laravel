@@ -9,7 +9,7 @@ class Balade extends Model
 {
     use HasFactory;
 
-
+  protected $guarded = [];
   public function Participations()
   {
     return $this->hasMany(Participation::class);

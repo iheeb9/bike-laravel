@@ -1,8 +1,37 @@
 @extends('layouts/contentNavbarLayout')
+@section('page-script')
+  <script src="{{asset('assets/js/ui-toasts.js')}}"></script>
+  <script>
+    $(document).ready(function() {
+      @if (Session::has('success'))
+      document.getElementById('showToastPlacement').click();
 
-@section('title', 'Tables - Basic Tables')
+      @endif
+    });</script>
+@endsection
 
 @section('content')
+  @if ($message =Session::has('success'))
+  <div class="bs-toast toast toast-placement-ex m-2" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+    <div class="toast-header">
+      <i class='bx bx-bell me-2'></i>
+      <div class="me-auto fw-semibold">success</div>
+      <small>1 min</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      opération effectuée avec succès
+    </div>
+  </div>
+  @endif
+    <div class="d-none">
+      <select id="selectTypeOpt" class="form-select color-dropdown">
+      <option value="bg-success" selected>Primary</option></select>
+      <select class="form-select placement-dropdown" id="selectPlacement">
+    <option value="top-0 end-0">Top left</option></select>
+      <button id="showToastPlacement" class="btn btn-primary d-block">Show Toast</button>
+    </div>
+
 
   <h4 class="fw-bold py-3 mb-4">
     <span class="text-muted fw-light">Balade /</span> List Balade
@@ -49,18 +78,20 @@
 {{--              </li>--}}
 {{--            </ul>--}}
 {{--          </td>--}}
-          @if($balade->disponible=='Illo.')
+          @if($balade->disponible=='Disponible')
             <td><span class="badge bg-label-success me-1">{{$balade->disponible}}</span></td>
+          @elseif($balade->disponible=='Reporté')
+            <td><span class="badge bg-label-warning me-1">{{$balade->disponible}}</span></td>
           @else
-            <td><span class="badge bg-label-primary me-1">{{$balade->disponible}}</span></td>
+            <td><span class="badge bg-label-danger me-1">{{$balade->disponible}}</span></td>
           @endif
 
           <td>
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Detail</a>
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit me-1"></i> Edit</a>
+
+                <a class="dropdown-item"  href="{{ route('balade.edit',$balade) }}"><i class="bx bx-edit me-1"></i> Edit</a>
                 <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
               </div>
             </div>
@@ -77,6 +108,7 @@
       {!! $ListBalade->links() !!}
     </div>
   </div>
+
   <!--/ Basic Bootstrap Table -->
 
   <hr class="my-5">

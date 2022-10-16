@@ -5,6 +5,7 @@ namespace App\Http\Controllers\balade;
 use App\Http\Controllers\Controller;
 use App\Models\Balade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 
 class BaladeController extends Controller
@@ -39,9 +40,25 @@ class BaladeController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'titre' => 'required',
+        'description' => 'required',
+        'nombre' => 'required',
+        'jauge' => 'required',
+        'prix' => 'required',
+        'info_billetterie' => 'required',
+        'distance' => 'required',
+        'guide_accompagnateur' => 'required',
+        'depart' => 'required',
+        'arrive' => 'required',
+        'date' => 'required',
+        'disponible' => 'required',
+        'Services' => 'required',
+        'image' => 'required',
 
+      ]);
 
-    $name = $request->file('image')->getClientOriginalName();
+      $name = $request->file('image')->getClientOriginalName();
       request()->file('image')->move(public_path() . '/images/' , $name);
       $balade=new \App\Models\Balade;
       $balade->titre=$request->titre;
@@ -62,7 +79,7 @@ class BaladeController extends Controller
       $balade->image=$name;
       $balade->save();
 
-      return redirect('/admin/balade');
+      return redirect()->route('balade.index')->with('success','successsssssssssssss');
     }
 
     /**
@@ -82,9 +99,9 @@ class BaladeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Balade $balade)
     {
-        //
+      return view('content.Balade.Edit_balade',compact('balade'));
     }
 
     /**
@@ -94,9 +111,31 @@ class BaladeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Balade $balade)
     {
-        //
+      $request->validate([
+        'description' => 'required',
+        'nombre' => 'required',
+        'jauge' => 'required',
+        'prix' => 'required',
+        'info_billetterie' => 'required',
+        'distance' => 'required',
+        'guide_accompagnateur' => 'required',
+        'depart' => 'required',
+        'arrive' => 'required',
+        'date' => 'required',
+        'disponible' => 'required',
+        'Services' => 'required',
+        'image' => 'required',
+
+      ]);
+
+      $name = $request->file('image')->getClientOriginalName();
+      request()->file('image')->move(public_path() . '/images/' , $name);
+      $balade->update($request->all());
+      $balade->image=$name;
+      $balade->save();
+      return redirect()->route('balade.index')->with('success','successsssssssssssss');
     }
 
     /**
