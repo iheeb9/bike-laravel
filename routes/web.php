@@ -19,12 +19,25 @@ $controller_path = 'App\Http\Controllers';
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
 
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
-//Category Routes
-  Route::get('/category',[App\Http\Controllers\CategoryController::class,'index']);
-  Route::get('/category/create',[App\Http\Controllers\CategoryController::class,'create']);
-  Route::post('/category',[App\Http\Controllers\CategoryController::class,'ajouter']);
 
 
+  //Category Routes
+Route::controller(App\Http\Controllers\CategoryController::class)->group(function () {
+  Route::get('/category', 'index');
+  Route::get('/category/create','create');
+  Route::post('/category','ajouter');
+  Route::get('/category/{category}/edit','editT');
+  Route::put('/category/{category}','update');
+});
+
+    //Velo Routes
+  Route::controller(App\Http\Controllers\VeloController::class)->group(function () {
+    Route::get('/velo', 'index');
+    Route::get('/velo/create','create');
+    Route::post('/velo','ajouter');
+
+
+  });
 });
 
 //Client Route

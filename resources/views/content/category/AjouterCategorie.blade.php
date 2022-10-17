@@ -16,10 +16,12 @@
             <div class="col-md-6 mb-3">
               <label for="defaultFormControlInput" class="form-label">Nom</label>
               <input type="text" name="nom" class="form-control" id="defaultFormControlInput" placeholder="Nom de velo" aria-describedby="defaultFormControlHelp" />
+                @error('nom') <small class="text-danger">{{$message}}</small>  @enderror
             </div>
             <div class="col-md-6 mb-3">
               <label for="defaultFormControlInput" class="form-label">Slug</label>
               <input type="text" name="slug" class="form-control" id="defaultFormControlInput" placeholder="Nom de velo" aria-describedby="defaultFormControlHelp" />
+              @error('slug') <small class="text-danger">{{$message}}</small>  @enderror
             </div>
           </div>
 
@@ -28,27 +30,32 @@
         <div class="input-group input-group-merge">
           <span class="input-group-text">With textarea</span>
           <textarea name="description" class="form-control" aria-label="With textarea"></textarea>
+          @error('description') <small class="text-danger">{{$message}}</small>  @enderror
         </div>
 
           <div class="col-md-6 mb-3">
             <label for="defaultFormControlInput" class="form-label">Status</label>
             <input  name="status" type="text" class="form-control" id="defaultFormControlInput" placeholder="Status" aria-describedby="defaultFormControlHelp" />
-         </div>
+            @error('status') <small class="text-danger">{{$message}}</small>  @enderror
+          </div>
 
           <h4>SEO Tags</h4>
           <div class="col-md-6 mb-3">
             <label for="defaultFormControlInput" class="form-label">Mete Title</label>
             <input type="text" name="meta_title" class="form-control" id="defaultFormControlInput" placeholder="Meta title" aria-describedby="defaultFormControlHelp" />
+            @error('meta_title') <small class="text-danger">{{$message}}</small>  @enderror
           </div>
           <label for="defaultFormControlInput" class="form-label">Meta Keyword</label>
           <div class="input-group input-group-merge mb-5">
             <span class="input-group-text">With textarea</span>
             <textarea class="form-control" name="meta_keyword" aria-label="With textarea"></textarea>
+            @error('meta_keyword') <small class="text-danger">{{$message}}</small>  @enderror
           </div>
         <label for="defaultFormControlInput" class="form-label">Meta Description</label>
         <div class="input-group input-group-merge mb-5">
           <span class="input-group-text">With textarea</span>
           <textarea class="form-control" name="meta_description" aria-label="With textarea"></textarea>
+          @error('meta_description') <small class="text-danger">{{$message}}</small>  @enderror
         </div>
 
         <div class=" mb-5">

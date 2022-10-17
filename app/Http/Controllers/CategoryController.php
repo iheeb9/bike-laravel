@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
      public function index(){
-        return view('content.category.ListeCategories');
+       $data =DB::table('categories')->orderBy('id','desc')->paginate(1);
+        return view('content.category.ListeCategories',compact('data'));
      }
 
      public function create(){
@@ -41,7 +43,30 @@ class CategoryController extends Controller
        $category->save();
 
             return redirect('/admin/category')->with('message','Categorie ajouter avec succès');
+     }
 
+     public  function editT(Category $category){
+       dump($category);
+
+       return view ('content.category.edit',compact('category'));
+     }
+
+     public function update (CategoryFormRequest $request, $category){
+       $category = Category::findOrFail($category);
+
+       $validatedData =$request->validated();
+
+       $category->nom =$validatedData['nom'];
+       $category->slug =Str::slug($validatedData['slug']);
+       $category->description =$validatedData['description'];
+       $category->meta_title =$validatedData['meta_title'];
+       $category->meta_description =$validatedData['meta_description'];
+       $category->meta_keyword =$validatedData['meta_keyword'];
+       //dump($category);
+
+       $category->update();
+
+       return redirect('/admin/category')->with('message','Categorie Modifier avec succès');
 
      }
 
