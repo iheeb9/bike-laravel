@@ -43,12 +43,12 @@
             <div class=" row mb-3">
               <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Date Start</label>
               <div class="col-md-4">
-                <input name="date_start" class="form-control" type="date" min="2022-10-15" id="html5-datetime-local-input" />
+                <input name="date_start" class="form-control" type="date" min="{{$mytime}}" id="html5-datetime-local-input" />
                 <div class="alert-danger"> {{ $errors->first('date_start')}}</div>
               </div>
               <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Date End</label>
               <div class="col-md-4">
-                <input name="date_end" class="form-control" type="date" min="2022-10-15" id="html5-datetime-local-input" />
+                <input name="date_end" class="form-control" type="date" min="{{$mytime}}" id="html5-datetime-local-input" />
                 <div class="alert-danger"> {{ $errors->first('date_end')}}</div>
               </div>
             </div>

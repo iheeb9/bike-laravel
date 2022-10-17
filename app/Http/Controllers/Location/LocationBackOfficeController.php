@@ -32,11 +32,13 @@ class LocationBackOfficeController extends Controller
     {
         $ListUser = User::all();
         $ListVelo = Velo::all();
-
+        $mytime = Carbon::now()->format('Y-m-d');;
 
         return view('content.location.AddLocation')
         ->with(compact('ListUser'))
-        ->with(compact('ListVelo'));  
+        ->with(compact('ListVelo'))
+        ->with(compact('mytime'))
+        ;  
     }
 
     /**
@@ -80,7 +82,19 @@ class LocationBackOfficeController extends Controller
      */
     public function edit(Location $location)
     {
-        //
+        $ListUser = User::all();
+        $ListVelo = Velo::all();
+        $mytime = Carbon::now()->format('Y-m-d');;
+
+        $location->user_id = User::find( $location->user_id);
+        $location->velo_id = Velo::find( $location->velo_id);
+        return view('content.location.editLocation')
+        ->with(compact('location'))
+        ->with(compact('ListUser'))
+        ->with(compact('ListVelo'))
+        ->with(compact('mytime'))
+        ;  
+
     }
 
     /**
@@ -92,7 +106,19 @@ class LocationBackOfficeController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
+        $Post = $this->validate($request,[
+            'user'=>'required',
+            'velo'=>'required',
+            'date_start' => 'required|date',
+            'date_end' => 'date|after:date_start'
+                ]);
+        $date_start = Carbon::parse($request->date_start)->format('Y-m-d');
+        $date_end = Carbon::parse($request->date_end)->format('Y-m-d');
+         $location ->update(['date_start' => $date_start, 'date_end' => $date_end, 'user_id' => $request->user,'velo_id' => $request->velo]);
+         $location->save();
+         return redirect('/admin/location');
+            
+            
     }
 
     /**
