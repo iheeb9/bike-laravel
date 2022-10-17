@@ -58,7 +58,7 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="maximum">Nombre Maximal</label>
             <div class="col-sm-2">
-              <input type="number" value="{{ $balade->nombre }}" name="nombre" min="0"   max="50" class="form-control" id="maximum" placeholder="maximum." />
+              <input type="number" value="{{ $balade->nombre }}" name="nombre" min="0"  class="form-control" id="maximum" placeholder="maximum." />
               @error('nombre')
               <small class="text-danger  " style="font-size: 10px;font-style: italic">{{$message}} </small>
               @enderror
@@ -66,14 +66,14 @@
 
             <label class="col-sm-2 col-form-label" for="Minimum">Nombre Minimum</label>
             <div class="col-sm-2">
-              <input type="number" value="{{ $balade->jauge }}" name="jauge" min="0"  max="50" class="form-control" id="Minimum" placeholder="minimum." />
+              <input type="number" value="{{ $balade->jauge }}" name="jauge" min="0"   class="form-control" id="Minimum" placeholder="minimum." />
               @error('jauge')
               <small class="text-danger " style="font-size: 10px;font-style: italic">{{$message}} </small>
               @enderror
             </div>
             <label class="col-sm-2 col-form-label" for="distance">distance</label>
             <div class="col-sm-2">
-              <input type="number" min="0" value="{{ $balade->distance }}" name="distance" max="50" class="form-control" id="distance" placeholder="km." />
+              <input type="number" min="0" value="{{ $balade->distance }}" name="distance"  class="form-control" id="distance" placeholder="km." />
               @error('distance')
               <small class="text-danger  " style="font-size: 10px;font-style: italic">{{$message}} </small>
               @enderror
@@ -132,7 +132,7 @@
             </div>
             <label class="col-sm-1 col-form-label" for="prix">prix</label>
             <div class="col-sm-2">
-              <input type="number" value="{{ $balade->prix }}"  min="0"  name="prix" max="50" class="form-control" id="prix" placeholder="dinars." />
+              <input type="number" value="{{ $balade->prix }}"  min="0"  name="prix" class="form-control" id="prix" placeholder="dinars." />
               @error('prix')
               <small class="text-danger  " style="font-size: 10px;font-style: italic">{{$message}} </small>
               @enderror

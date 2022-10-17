@@ -63,7 +63,7 @@
         <tr>
           <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$balade->titre}}</strong></td>
           <td>{{$balade->guide_accompagnateur}}</td>
-          <td>{{$balade->nbre_participant}}</td>
+          <td>c</td>
 
 {{--          <td>--}}
 {{--            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">--}}

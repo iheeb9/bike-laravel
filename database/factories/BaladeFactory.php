@@ -19,20 +19,20 @@ class BaladeFactory extends Factory
     {
         return [
           'titre' => $this->faker->name(),
-          'description' => $this->faker->text(),
+          'description' => $this->faker->text(200),
           'nombre' => $this->faker->randomNumber(2),
           'jauge' => $this->faker->randomNumber(2),
           'prix' => $this->faker->randomNumber(2),
           'nbre_participant' => $this->faker->randomNumber(2),
-          'info_billetterie' => $this->faker->text(),
+          'info_billetterie' =>"Disponible à la réservation",
           'distance' => $this->faker->randomNumber(5),
           'guide_accompagnateur' => $this->faker->name(),
           'depart' => $this->faker->text(10),
           'arrive' => $this->faker->text(10),
           'date' => $this->faker->date(),
-          'disponible' => $this->faker->text(10),
-          'image' => $this->faker->text(),
-          'Services' => $this->faker->text(40)
+          'disponible' => "Disponible",
+          'image' => "les-balades-a-velo-deutsch-1579098705.jpg",
+          'Services' => $this->faker->text(50)
         ];
     }
 }

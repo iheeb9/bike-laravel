@@ -6,10 +6,10 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="{{route('home')}}">Home</a></li>
         <li><a href="#">Location</a></li>
         <li><a href="#">Evennement</a></li>
-        <li><a href="#">Balade</a></li>
+        <li><a href="{{route('clientbalade.index')}}">Balade</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Velo</a></li>
         <li><a href="#">Association</a></li>
