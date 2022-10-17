@@ -28,8 +28,8 @@ Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('h
 Auth::routes();
 
 
-
-
+//evenements
+Route::view('/events', 'events.events', ['name' => 'James']);
 
 
 
