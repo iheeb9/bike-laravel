@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-          $table->string('nom');
+          $table->string('Subject');
+          $table->string('Commentaire');
+          $table->string('image');
             $table->timestamps();
           $table->foreignId('user_id')->constrained()
             ->onDelete('restrict')

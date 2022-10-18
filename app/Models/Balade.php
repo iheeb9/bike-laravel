@@ -10,7 +10,9 @@ class Balade extends Model
     use HasFactory;
 
 
-  public function Participations()
+
+
+    public function Participations()
   {
     return $this->hasMany(Participation::class);
   }

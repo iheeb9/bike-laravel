@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
           $table->id();
           $table->string('nom');
+          $table->date('date');
+          $table->string('Description');
+          $table->string('image');
           $table->timestamps();
           $table->foreignId('balade_id')->constrained()
             ->onDelete('restrict')
