@@ -27,7 +27,7 @@ class Velo extends Model
     }
   public function Category()
   {
-    return $this->belongsTo(Category::class);
+    return $this->belongsTo(Category::class,'categorie_id','id');
   }
   public function Participations()
   {

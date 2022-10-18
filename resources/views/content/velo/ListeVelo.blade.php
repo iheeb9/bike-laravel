@@ -18,30 +18,46 @@
           <thead>
           <tr>
             <th>Nom</th>
-            <th>Slug</th>
+            <th>Serie</th>
             <th>Description</th>
-            <th>meta title</th>
-            <th>meta keyword</th>
+            <th>categorie_id</th>
+            <th>Quantite</th>
+            <th>prix_heure</th>
+            <th>Disponibilite</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
+          @if(!empty($data)&& $data->count())
+            @foreach ($data as $v)
 
               <tr>
-                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong></strong></td>
-                <td></td>
-                <td></td>
-                <td><span class="badge bg-label-primary me-1"></span></td>
-                <td></td>
+                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$v->nom}}</strong></td>
+                <td>{{$v->serie}}</td>
+                <td>{{$v->description}}</td>
                 <td>
-                  <a href="" class="btn btn-success">Modifier</a>
-                  <a href="#" class="btn btn-danger">Supprimer</a>
+                  {{$v->Category->nom}}
+                  {{--  @if($data->c)
+                    {{$v->category->nom}}
+                    @else
+                    No category
+                    @endif--}}
+                </td>
+
+                <td><span class="badge bg-label-primary me-1">{{$v->quantite}}</span></td>
+                <td>{{$v->prix_heure}}</td>
+                <td>{{$v->Disponibilite}}</td>
+                <td>
+                  <a href="{{ url ('admin/velo/'.$v->id.'/edit') }}" class="btn btn-success">Modifier</a>
+                  <a href="{{url('admin/velo/'.$v->id.'/delete')}}" onclick="return confirm('Supprimer !!!!!')"  class="btn btn-danger">Supprimer</a>
                 </td>
               </tr>
-
+            @endforeach
+          @else
             <tr>
               <td colspan="6">There are  no data</td>
             </tr>
-
+          @endif
           </tbody>
         </table>
         <div>

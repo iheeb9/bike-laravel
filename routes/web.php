@@ -35,6 +35,11 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
     Route::get('/velo', 'index');
     Route::get('/velo/create','create');
     Route::post('/velo','ajouter');
+    Route::get('/velo/{velo}/edit','editT');
+    Route::put('/velo/{velo}','update');
+    Route::get('/velo/{velo_id}/delete','delete');
+    Route::get('/velo-image/{velo_image_id}/delete','destroyImage');
+
 
 
   });
