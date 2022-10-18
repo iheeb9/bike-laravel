@@ -7,6 +7,7 @@ use App\Models\Balade;
 use App\Models\Velo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 
 class balade_client extends Controller
@@ -91,4 +92,25 @@ class balade_client extends Controller
     {
         //
     }
+
+  public function participation(Request $request, Balade $balade)
+  {
+    $request->validate([
+        'velo_id' => 'required',
+      ]);
+    error_log($balade);
+    $participation=new \App\Models\Participation();
+    $participation->velo_id=$request->velo_id;
+    $participation->user_id=Auth::user()->id;
+    $participation->balade_id=$balade->id;
+    $participation->prixtotale=$balade->prix;
+
+    $participation->save();
+//    $newparticipation=$balade->nbre_participant+1;
+//    $balade->update($newparticipation);
+    return redirect()->route('clientbalade.index');
+
+  }
+
+
 }

@@ -18,7 +18,7 @@ class BaladeSeeder extends Seeder
     public function run()
     {
       Balade::factory(5)
-        ->has(Participation::factory()->count(5))
+        ->has(Participation::factory()->count(6))
         ->create();
     }
 }

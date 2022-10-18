@@ -38,43 +38,35 @@
 
           </div>      <br> <br> <br>
           <div class="product-details">
-            <h2 class="product-name">Informations Générales</h2>
-            <div>
-              <div class="product-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-              </div>
-              <a class="review-link" href="#">10 Review(s) | Add your review</a>
+            <h2 class="product-name" >Informations Générales</h2>
+            <div style="display: flex !important; margin-bottom: 20px ;margin-top: 20px"    >
+              <p   class="col-md-4" >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >Guide Accompagnateur:  </span> {{$balade->guide_accompagnateur}} DT</p>
+              <p  class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >Départ:  </span> {{$balade->depart}} </p>
+              <p  class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >arrive:  </span> {{$balade->arrive}} </p>
             </div>
-            <div>
-              <h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
-              <span class="product-available">In Stock</span>
+
+
+            <div style="display: flex !important; margin-bottom: 20px "   >
+              <p   class="col-md-4" >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >nombre maximal:  </span> {{$balade->nombre}} participants.</p>
+              <p  class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >Départ à partir de:  </span> {{$balade->jauge}} participants.</p>
+              <p  class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >Distance:  </span> {{$balade->distance}} km</p>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div style="display: flex !important; margin-bottom: 20px " >
+              <p   class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >participants:  </span> {{$balade->nbre_participant}} participants.</p>
+              <p   class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >info_billetterie:  </span> {{$balade->info_billetterie}} .</p>
+              <p  class="col-md-4"  >     <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >Date:  </span> {{$balade->date}} .</p>
+            </div>
+
+            <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >service:  </span>
+            <p> {{$balade->Services}}</p>
+            <span class="text-start" style="color:#333 ; font-style: oblique; ;margin-right: 10px ;font-weight: bold" >description:  </span>
+          <p>
+            <p> {{$balade->description}}</p>
+          </p>
 
 
-            <ul class="product-btns">
-              <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-              <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
-            </ul>
 
-            <ul class="product-links">
-              <li>Category:</li>
-              <li><a href="#">Headphones</a></li>
-              <li><a href="#">Accessories</a></li>
-            </ul>
 
-            <ul class="product-links">
-              <li>Share:</li>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-            </ul>
-            <li class="text-start"><a data-toggle="tab" >Description:</a></li>
           </div>
 
         </div>
@@ -83,6 +75,9 @@
         <!-- /Product thumb imgs -->
 
         <!-- Product details -->
+        <form action="{{ route('addparticipation',$balade) }}" method="POST">
+          @csrf
+
         <div class="sticky col-md-4">
 
           <div class="product-details">
@@ -97,16 +92,31 @@
 
             <div class="add-to-cart " id="sticky">
               <div class="product-options " >
-                <label>
-                  <select class="input-select " id="velo-dropdown" style="width: 360px">
-                    <option value="">None...</option>
-                    @foreach ($velo as $v)
-                      <option value="{{$v->id}}">
-                        {{$v->nom}}
-                      </option>
-                    @endforeach
-                  </select>
-                </label>
+                @php
+                  $i = false
+                @endphp
+                @foreach($balade->Participations as $participation)
+
+                  @if($participation->balade_id==$balade->id && $participation->user_id==Auth::user()->id)
+                      <span class="product-available">deja reservé</span>
+                    @php
+                      $i =true;
+                    @endphp
+                  @endif
+                @endforeach
+                @if($i==false)
+
+                  <label>
+                    <select  name="velo_id" class="input-select " id="velo-dropdown" style="width: 360px">
+                      <option >None...</option>
+                      @foreach ($velo as $v)
+                        <option value="{{$v->id}}">
+                          {{$v->nom}}
+                        </option>
+                      @endforeach
+                    </select>
+                  </label>
+                @endif
 
               </div>
             </div>
@@ -128,7 +138,9 @@
 
 
 
-<div id="detail_velo">
+  <div  id="detail_velo"  >
+    @csrf
+<div id="formulaire">
 {{--          <div class="col-md-12 order-details" >--}}
 {{--            <div class="section-title text-center">--}}
 {{--              <h3 class="title">Your Order</h3>--}}
@@ -165,15 +177,18 @@
 {{--                I've read and accept the <a href="#">terms & conditions</a>--}}
 {{--              </label>--}}
 {{--            </div>--}}
-{{--            <a href="#" class="primary-btn order-submit">Place order</a>--}}
-          </div>
+</div>
+    <div   id="valid" hidden>
+    <button    type='submit' class='primary-btn' style='margin-top: 50px;margin-bottom: -50px;margin-left: 110px'>valider</button>
+    </div>
+  </div>
 
 
 
           </div>
           <!-- /Order Details -->
 
-
+        </form>
 
         </div>
 
@@ -181,16 +196,22 @@
       <script src="{{ asset('assets/Client/js/jquery.min.js') }}"></script>
       <script>
         $(document).ready(function () {
+
           $('#velo-dropdown').on('change', function () {
-            $("#detail_velo").empty();
+
+            $("#formulaire").empty();
+            $("#valid").hide();
             var idvelo = this.value;
             console.log(idvelo)
             let ea = {!! json_encode($velo->toArray()) !!};
-              $("#detail_velo").append(
-                "<div class='col-md-12 order-details'><li class='text-danger'> "+ea[idvelo].nom+"</li></div></div>"
-
-
-              );
+            if (ea[idvelo-1] !=null){
+            $("#formulaire").append(
+                "<div class='col-md-12 order-details'><li class='review-link my'>"+ea[idvelo-1].nom+"</li>" +
+                "<div style='display: flex !important; justify-content: space-between'><li class='review-link d-f col'>PrixTotale:</li><h4 class='product-price' style='color: #D10024'>50d</h4></div>"+
+                "</div>"
+            );
+         $("#valid").show();
+            }
             })})
 
             // $("#detail_velo").append(

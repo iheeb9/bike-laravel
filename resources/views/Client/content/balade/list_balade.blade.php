@@ -1,5 +1,6 @@
-@extends('Client/layouts/Client_commonMaster')
 
+
+@extends('Client/layouts/Client_commonMaster')
 @section('content')
 
 <!-- BREADCRUMB -->
@@ -49,7 +50,7 @@
 
           </div>
           <div>
-            <h3 class="product-price">{{$balade->prix}} DT</h3>
+            <h4 class="product-price" style="font-size: 17px">     <span class="text-start" style="color:#333 ; font-style: oblique; font-size: 13px;margin-right: 10px " >à partir de  </span> {{$balade->prix}} DT</h4>
 {{--            <span class="product-available">{{$balade->disponible}}</span>--}}
           </div>
           <p>{{$balade->description}}</p>
@@ -57,13 +58,18 @@
 
 
           <div class="add-to-cart text-right">
-            @if($balade->disponible=='Disponible')
-              <a href="{{ route('clientbalade.show',$balade->id)}}"><button class="add-to-cart-btn justify-content-end "  ><i  class="fa fa-shopping-cart"></i>  Reserver</button>
-              </a>
 
-            @else
+
+
+           @if($balade->disponible=='Disponible')
+
+                  <a href="{{ route('clientbalade.show',$balade->id)}}"><button class="add-to-cart-btn justify-content-end "  ><i  class="fa fa-shopping-cart"></i>  Reserver</button>
+                  </a>
+
+           @else
               <span class="product-available">{{$balade->disponible}}</span>
-            @endif
+           @endif
+
             </div>
 
           <ul class="product-links">

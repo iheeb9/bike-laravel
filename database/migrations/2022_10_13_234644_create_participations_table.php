@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('participations', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->string('prixtotale');
+
             $table->timestamps();
             $table->foreignId('user_id')->constrained()
             ->onDelete('restrict')
@@ -23,6 +24,7 @@ return new class extends Migration
              $table->foreignId('velo_id')->constrained()
             ->onDelete('restrict')
             ->onUpdate('restrict');
+
         });
     }
 
