@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EvennementController;
+use App\Models\Evennement;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,13 @@ Auth::routes();
 
 
 //evenements
-Route::view('/events', 'events.events', ['name' => 'James']);
+$ev1 = new Evennement();
+$ev1->nom = "test";
+$ev1->id = 1;
+$Array = array($ev1);
+Route::resource('evennements', EvennementController::class);
+
+//Route::view('/evennements', 'events.index', ['evennements' => $Array]);
 
 
 
