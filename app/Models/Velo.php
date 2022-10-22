@@ -10,7 +10,7 @@ class Velo extends Model
     use HasFactory;
 
     protected  $table = 'velos';
-    protected  $fillable=[
+  protected  $fillable=[
       'categorie_id',
       'nom',
       'serie',

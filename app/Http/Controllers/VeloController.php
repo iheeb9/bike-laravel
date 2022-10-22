@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Velo;
 use App\Models\VeloImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class VeloController extends Controller
@@ -14,7 +15,9 @@ class VeloController extends Controller
   public function index()
   {
     $categories = Category::all();
-    $data = Velo::all();
+    //$data = Velo::all();
+    $data =DB::table('velos')->orderBy('id','desc')->paginate(1);
+
     return view('content.velo.ListeVelo', compact('data'));
   }
 
@@ -169,4 +172,57 @@ class VeloController extends Controller
         return redirect()->back()->with('message', ' velo supprimé');
 
       }
+
+  public function indexfront()
+  {
+    $categories = Category::all();
+    $data = Velo::all();
+    return view('content.velo.ListVeloFront', compact('data'  ));
+  }
+
+  public function store (){
+    $categories = Category::all();
+  $data = DB::table('_velo_images')->distinct()
+      ->join('velos','_velo_images.velo_id','=','velos.id')
+      ->select('_velo_images.*','velos.*')
+      ->orderBy('velo_id','desc')->paginate(2);
+
+    return view('Client.content.home.store',compact('data','categories'));
+         }
+
+         public function details (int $velo_id )
+              {
+                $v = Velo::findOrFail($velo_id);
+                if($v){
+                  return view('Client.content.home.DetailsVelo',compact ('v'));
+                }else{
+                  return redirect()->back();
+                }
+                }
+
+
+                public function searchProduct (Request $request){
+                  $categories = Category::all();
+                  if($request->search){
+                     $searchVelo= Velo::where('nom','LIKE','%'.$request->search.'%')->latest()->paginate(1);
+                     return view ('Client.content.home.searchVelo',compact('searchVelo','categories'));
+                   }else{
+                    redirect ('Client.content.home.store');
+                   }
+
+                }
+
+
+  /*public function filtervelotByCategory($idCategory){
+    $categories = Category::all();
+    $category=Category::findOrFail($idCategory);
+    if($category){
+      $velo=$category->Velos()->get();
+      return view('', compact('category', 'velo','categories'));
+    }
+    else{
+      return redirect()->back();
+    }
+  }*/
+
 }

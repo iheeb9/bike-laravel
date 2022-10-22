@@ -60,7 +60,7 @@
                 <td>{{$c->meta_keyword}}</td>
                 <td>
                   <a href="{{ url ('admin/category/'.$c->id.'/edit') }}" class="btn btn-success">Modifier</a>
-                  <a href="#" wire:click="Suppcategorie({{$c->id}}"  class="btn btn-danger">Supprimer</a>
+                  <a href="{{url('admin/category/'.$c->id.'/delete')}}" onclick="return confirm('Supprimer !!!!!')"  class="btn btn-danger">Supprimer</a>
                 </td>
               </tr>
             @endforeach

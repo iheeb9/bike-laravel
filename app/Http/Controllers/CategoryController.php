@@ -70,6 +70,27 @@ class CategoryController extends Controller
 
      }
 
+    public  function categories (){
+      $data =DB::table('categories')->orderBy('id','desc')->paginate(2);
+      return view('Client.content.home.categories',compact('data'));
+    }
 
+    public function productsofcategorie ($category_slug){
+       $cat=Category::where ('slug',$category_slug)->first();
+       if($cat){
+          $vel=$cat->Velos()->paginate(2);
+          return view ('Client.content.home.veloCat',compact('vel','cat'));
+       }else{
+         return redirect()->back();
+       }
+    }
+
+  public function delete (int $cat_id){
+    $category=Category::findOrFail($cat_id);
+    $category->Velos->each->delete();
+    $category->delete();
+    return redirect()->back()->with('message', ' catgory supprimé');
+
+  }
 
 }

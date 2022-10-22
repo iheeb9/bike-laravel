@@ -20,7 +20,6 @@
             <th>Nom</th>
             <th>Serie</th>
             <th>Description</th>
-            <th>categorie_id</th>
             <th>Quantite</th>
             <th>prix_heure</th>
             <th>Disponibilite</th>
@@ -35,14 +34,7 @@
                 <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$v->nom}}</strong></td>
                 <td>{{$v->serie}}</td>
                 <td>{{$v->description}}</td>
-                <td>
-                  {{$v->Category->nom}}
-                  {{--  @if($data->c)
-                    {{$v->category->nom}}
-                    @else
-                    No category
-                    @endif--}}
-                </td>
+
 
                 <td><span class="badge bg-label-primary me-1">{{$v->quantite}}</span></td>
                 <td>{{$v->prix_heure}}</td>
@@ -61,11 +53,14 @@
           </tbody>
         </table>
         <div>
-{{--          {{$data->links()}}--}}
+
+          {{$data->links()}}
         </div>
       </div>
     </div>
 
   </div>
+
+
 @endsection
 

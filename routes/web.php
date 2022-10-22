@@ -28,6 +28,8 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
   Route::post('/category','ajouter');
   Route::get('/category/{category}/edit','editT');
   Route::put('/category/{category}','update');
+  Route::get('/category/{cat_id}/delete','delete');
+
 });
 
     //Velo Routes
@@ -49,7 +51,14 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
 Auth::routes();
+Route::get('/velofront',[App\Http\Controllers\VeloController::class, 'indexfront']);
+Route::get('/allcategories',[App\Http\Controllers\CategoryController::class, 'categories']);
+Route::get('/allcategories/{category_slug}',[App\Http\Controllers\CategoryController::class, 'productsofcategorie']);
+Route::get('/allvelo',[App\Http\Controllers\VeloController::class, 'store']);
+Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController::class,'details']);
+Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
 
+//Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
 
 

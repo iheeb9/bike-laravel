@@ -23,6 +23,6 @@ class Category extends Model
 
   public function Velos()
   {
-    return $this->hasMany(Velo::class);
+    return $this->hasMany(Velo::class,'categorie_id','id');
   }
 }
