@@ -40,13 +40,13 @@ class VeloController extends Controller
     );*/
 
     $velo = new Velo();
-    $velo->nom = $request->nom;
-    $velo->serie = $request->serie;
-    $velo->quantite = $request->quantite;
-    $velo->description = $request->description;
-    $velo->categorie_id = $request->categorie_id;
-    $velo->prix_heure = $request->prix_heure;
-    $velo->Disponibilite = $request->Disponibilite;
+    $velo->nom = $request->validate(['nom'=>'required']);
+    $velo->serie = $request->validate(['serie'=>'required']);
+    $velo->quantite = $request->validate(['quantite'=>'required']);
+    $velo->description = $request->validate(['description'=>'required']);
+    $velo->categorie_id = $request->validate(['categorie_id'=>'required']);
+    $velo->prix_heure = $request->validate(['prix_heure'=>'required']);
+    $velo->Disponibilite = $request->validate(['Disponibilite'=>'required']);
 
 
     $velo->save();
@@ -115,13 +115,13 @@ class VeloController extends Controller
 
     if ($velo) {
 
-      $velo->nom = $request->nom;
-      $velo->serie = $request->serie;
-      $velo->quantite = $request->quantite;
-      $velo->description = $request->description;
-      $velo->categorie_id = $request->categorie_id;
-      $velo->prix_heure = $request->prix_heure;
-      $velo->Disponibilite = $request->Disponibilite;
+      $velo->nom = $request->validate(['nom'=>'required']);
+      $velo->serie = $request->validate(['serie'=>'required']);
+      $velo->quantite = $request->validate(['quantite'=>'required']);
+      $velo->description = $request->validate(['description'=>'required']);
+      $velo->categorie_id = $request->validate(['categorie_id'=>'required']);
+      $velo->prix_heure = $request->validate(['prix_heure'=>'required']);
+      $velo->Disponibilite = $request->validate(['Disponibilite'=>'required']);
        $velo->update();
       if ($request->hasFile('image')) {
         $uploadPath = 'uploads/velo/';
