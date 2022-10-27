@@ -9,7 +9,8 @@ class Velo extends Model
 {
     use HasFactory;
 
-    protected  $table = 'velos';
+
+  protected  $table = 'velos';
   protected  $fillable=[
       'categorie_id',
       'nom',
@@ -20,6 +21,7 @@ class Velo extends Model
       'Disponibilite',
 
     ];
+
 
   public function Locations()
     {

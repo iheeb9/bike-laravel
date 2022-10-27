@@ -2,23 +2,23 @@
 
 namespace Database\Seeders;
 
+use App\Models\Balade;
 use App\Models\Participation;
+use http\Client\Curl\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class BaladeSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-     //  \App\Models\User::factory(1)->make();
-        $this->call([
-          BaladeSeeder::class
-        ]);
-
+      Balade::factory(5)
+        ->has(Participation::factory()->count(6))
+        ->create();
     }
 }

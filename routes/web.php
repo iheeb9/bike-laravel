@@ -17,8 +17,10 @@ $controller_path = 'App\Http\Controllers';
 
 // Admin Route
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
-
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+  Route::resource('balade', \App\Http\Controllers\balade\BaladeController::class);
+  Route::get('/participations', $controller_path . '\balade\BaladeController@participations')->name('balade_participations');
+
 
 
   //Category Routes
@@ -45,11 +47,14 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
 
 
   });
+
 });
 
 //Client Route
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
+Route::resource('clientbalade', \App\Http\Controllers\balade\client\balade_client::class);
+Route::post('/addparticipation/{balade}', $controller_path . '\balade\client\balade_client@participation')->name('addparticipation');
 Auth::routes();
 Route::get('/velofront',[App\Http\Controllers\VeloController::class, 'indexfront']);
 Route::get('/allcategories',[App\Http\Controllers\CategoryController::class, 'categories']);
@@ -57,7 +62,6 @@ Route::get('/allcategories/{category_slug}',[App\Http\Controllers\CategoryContro
 Route::get('/allvelo',[App\Http\Controllers\VeloController::class, 'store']);
 Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController::class,'details']);
 Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
-
 //Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
 
@@ -117,7 +121,7 @@ Route::get('/icons/boxicons', $controller_path . '\icons\Boxicons@index')->name(
 
 // form elements
 Route::get('/forms/basic-inputs', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs');
-Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
+  Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
 
 // form layouts
 Route::get('/form/layouts-vertical', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');
