@@ -13,7 +13,37 @@
       "name": "Velo",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "#"
+      "url": "#",
+     "submenu": [
+       {
+         "url": "/admin/velo",
+         "name": "Liste des velo",
+         "slug": "extended-ui-perfect-scrollbar"
+       },
+       {
+         "url": "/admin/velo/create",
+         "name": "Ajouter Velo",
+         "slug": "extended-ui-perfect-scrollbar"
+       }
+     ]
+    },
+    {
+      "name": "Categories",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#",
+      "submenu": [
+        {
+          "url": "/admin/category",
+          "name": "Liste Categorie",
+          "slug": "extended-ui-perfect-scrollbar"
+        },
+        {
+          "url": "/admin/category/create",
+          "name": "Ajouter categories",
+          "slug": "extended-ui-perfect-scrollbar"
+        }
+      ]
     },
 	{
       "name": "Location",
@@ -87,6 +117,6 @@
         }
       ]
     }
-    
+
   ]
 }

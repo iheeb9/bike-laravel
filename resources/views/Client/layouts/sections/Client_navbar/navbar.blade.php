@@ -11,7 +11,8 @@
         <li><a href="#">Evennement</a></li>
         <li><a href="#">Balade</a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Velo</a></li>
+        <li><a href="{{url('/allvelo')}}">Velo</a></li>
+        <li><a href="{{url('/allcategories')}}">Categories</a></li>
         <li><a href="#">Association</a></li>
       </ul>
       <!-- /NAV -->

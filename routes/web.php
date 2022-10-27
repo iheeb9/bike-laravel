@@ -20,13 +20,45 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($
 
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
 
+
+  //Category Routes
+Route::controller(App\Http\Controllers\CategoryController::class)->group(function () {
+  Route::get('/category', 'index');
+  Route::get('/category/create','create');
+  Route::post('/category','ajouter');
+  Route::get('/category/{category}/edit','editT');
+  Route::put('/category/{category}','update');
+  Route::get('/category/{cat_id}/delete','delete');
+
+});
+
+    //Velo Routes
+  Route::controller(App\Http\Controllers\VeloController::class)->group(function () {
+    Route::get('/velo', 'index');
+    Route::get('/velo/create','create');
+    Route::post('/velo','ajouter');
+    Route::get('/velo/{velo}/edit','editT');
+    Route::put('/velo/{velo}','update');
+    Route::get('/velo/{velo_id}/delete','delete');
+    Route::get('/velo-image/{velo_image_id}/delete','destroyImage');
+
+
+
+  });
 });
 
 //Client Route
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
 Auth::routes();
+Route::get('/velofront',[App\Http\Controllers\VeloController::class, 'indexfront']);
+Route::get('/allcategories',[App\Http\Controllers\CategoryController::class, 'categories']);
+Route::get('/allcategories/{category_slug}',[App\Http\Controllers\CategoryController::class, 'productsofcategorie']);
+Route::get('/allvelo',[App\Http\Controllers\VeloController::class, 'store']);
+Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController::class,'details']);
+Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
 
+//Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
 
 
