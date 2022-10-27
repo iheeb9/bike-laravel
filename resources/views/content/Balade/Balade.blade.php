@@ -87,9 +87,11 @@
           @endif
 
           <td>
+
             <form  action="{{ route('balade.destroy',$balade) }}" method="POST">
               @csrf
               @method('DELETE')
+
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
               <div class="dropdown-menu">
@@ -101,6 +103,7 @@
               </div>
             </div>
             </form>
+
           </td>
         </tr>
         <tr>
@@ -118,6 +121,5 @@
   <!--/ Basic Bootstrap Table -->
 
   <hr class="my-5">
-
 
 @endsection

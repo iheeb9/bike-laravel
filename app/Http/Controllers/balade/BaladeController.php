@@ -146,6 +146,7 @@ class BaladeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Balade $balade)
     {
       $balade->delete();
@@ -165,5 +166,5 @@ class BaladeController extends Controller
       ->paginate(5);
 
     return view('content.Balade.participations',compact('participations'));
-  }
+
 }

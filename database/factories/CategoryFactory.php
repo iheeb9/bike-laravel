@@ -17,9 +17,11 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
+
           'nom' => $this->faker->text(10),
           'slug' => $this->faker->text(10),
            'description' => $this->faker->text()
+
         ];
     }
 }

@@ -17,14 +17,16 @@ return new class extends Migration
           $table->charset = 'utf8'; 
           $table->collation = 'utf8_unicode_ci';
             $table->id();
-          $table->string('nom');
+          $table->string('Subject');
+          $table->string('Commentaire');
+          $table->string('image');
             $table->timestamps();
           $table->foreignId('user_id')->constrained()
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
           $table->foreignId('review_id')->constrained()
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
         });
     }

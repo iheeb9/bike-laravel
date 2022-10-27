@@ -31,6 +31,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('Services');
             $table->string('disponible');
+
              $table->string('image');
 
 

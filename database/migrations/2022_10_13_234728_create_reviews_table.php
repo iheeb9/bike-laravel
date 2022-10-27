@@ -18,10 +18,13 @@ return new class extends Migration
             $table->collation = 'utf8_unicode_ci';
           $table->id();
           $table->string('nom');
+          $table->date('date');
+          $table->string('Description');
+          $table->string('image');
           $table->timestamps();
           $table->foreignId('balade_id')->constrained()
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

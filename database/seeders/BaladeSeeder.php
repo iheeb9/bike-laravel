@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Balade;
 use App\Models\Participation;
+
 use http\Client\Curl\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,4 +23,5 @@ class BaladeSeeder extends Seeder
         ->create();
     }
 }
+
 

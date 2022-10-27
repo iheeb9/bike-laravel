@@ -32,7 +32,9 @@ class BaladeFactory extends Factory
           'date' => $this->faker->date(),
           'disponible' => "Disponible",
           'image' => "les-balades-a-velo-deutsch-1579098705.jpg",
+
           'Services' => $this->faker->text(50)
+
         ];
     }
 }

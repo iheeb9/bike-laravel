@@ -22,6 +22,14 @@ $controller_path = 'App\Http\Controllers';
 // Admin Route
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+
+  Route::resource('review',\App\Http\Controllers\ReviewController::class);
+
+  Route::resource('post', \App\Http\Controllers\PostController::class);
+
+
+
+
   Route::resource('balade', \App\Http\Controllers\balade\BaladeController::class);
   Route::get('/participations', $controller_path . '\balade\BaladeController@participations')->name('balade_participations');
 
@@ -52,12 +60,18 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
 
   });
 
+
 });
 
 //Client Route
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
 Route::resource('clientbalade', \App\Http\Controllers\balade\client\balade_client::class);
+
+Route::resource('clientreview',\App\Http\Controllers\ReviewFrontController::class);
+Route::resource('clientpost',\App\Http\Controllers\PostController::class);
+
+
 Route::post('/addparticipation/{balade}', $controller_path . '\balade\client\balade_client@participation')->name('addparticipation');
 Auth::routes();
 Route::get('/velofront',[App\Http\Controllers\VeloController::class, 'indexfront']);

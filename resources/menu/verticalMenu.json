@@ -61,10 +61,10 @@
       "url": "#"
     },
 	{
-      "name": "Blog",
+      "name": "Review",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "#"
+      "url": "/admin/review"
     },
 	{
       "name": "Evennnements",
@@ -88,6 +88,8 @@
       "slug": "balade_participations",
       "url": "admin/participations"
     }
+
       ]
     }]
+
 }
