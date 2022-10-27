@@ -32,7 +32,7 @@
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Review /</span> Posts</h4>
 
   <!-- Examples -->
-  <div class="row mb-5">
+  <div>
     <div class="col-md-12 col-lg-12 mb-8">
       <div class="card h-100">
         <div class="card-body">
@@ -74,13 +74,40 @@ margin-left:15%;"/>
       <table class="table">
         <thead>
         <tr>
-          <th>Titre</th>
-          <th>date</th>
-          <th>Description</th>
+          <th>Subject</th>
+          <th>Post date </th>
+          <th> </th>
+          <th>User Post </th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody class="table-border-bottom-0">
+        @foreach($posts as $p)
+          <tr>
+            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$p->Subject}}</strong></td>
+            <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{$p->created_at}}</td>
+            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <img class="img-fluid" src="{{asset('images/'.$p->image)}}" alt="Card image cap" style="height:200px;
+width: 70% ;
+margin-left:15%;"/></td>
+            <td><i class="fab fa-angular fa-lg text-danger me-3"></i>{{$p->user->name}}</td>
+            <td>
+              <div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                <div class="dropdown-menu">
+                  <form action="{{ route('post.destroy',$p->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <button  type="submit" class="btn bg-transparent"  style="padding-left: 1px; margin-top: 1px">     <a class="dropdown-item"   ><i class="bx bx-trash me-1"></i>   Delete         </a></button>
+
+                  </form>
+
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+        @endforeach
         </tbody>
       </table>
     </div>

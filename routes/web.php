@@ -21,6 +21,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
   Route::resource('review',\App\Http\Controllers\ReviewController::class);
   Route::resource('balade', \App\Http\Controllers\balade\BaladeController::class);
+  Route::resource('post', \App\Http\Controllers\PostController::class);
+
 
 
 
@@ -30,6 +32,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
 Route::resource('clientbalade', \App\Http\Controllers\balade\client\balade_client::class);
+Route::resource('clientreview',\App\Http\Controllers\ReviewFrontController::class);
+Route::resource('clientpost',\App\Http\Controllers\PostController::class);
 
 Auth::routes();
 

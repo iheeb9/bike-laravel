@@ -19,10 +19,9 @@ class PostFactory extends Factory
         return [
           'Subject' => $this->faker->name(),
           'Commentaire' => $this->faker->text(200),
-          'image' => "les-balades-a-velo-deutsch-1579098705.jpg",
-          "review_id" => \App\Models\Review::factory()->create()->id,
-          "user_id" => \App\Models\User::factory()->create()->id,
-
+          'image' => "b.jpg",
+          "review_id" => \App\Models\Review::factory(),
+          "user_id" => \App\Models\User::factory(),
         ];
     }
 }

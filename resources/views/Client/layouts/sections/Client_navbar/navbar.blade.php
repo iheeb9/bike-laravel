@@ -6,12 +6,25 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li ><a href="#">Home</a></li>
         <li><a href="#">Location</a></li>
         <li><a href="#">Evennement</a></li>
         <li><a href="#">Balade</a></li>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Velo</a></li>
+        @guest
+          @if (Route::has('login'))
+            <li class="nav-item">
+            </li>
+          @endif
+            @if (Route::has('register'))
+              <li class="nav-item">
+              </li>
+            @endif
+        @else
+          <li class="active" class="nav-item">
+            <a class="nav-link" href="{{ route('clientreview.index') }}">Review</a>
+          </li>
+        @endguest
         <li><a href="#">Association</a></li>
       </ul>
       <!-- /NAV -->

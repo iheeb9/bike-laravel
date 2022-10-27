@@ -21,8 +21,8 @@ return new class extends Migration
           $table->string('image');
           $table->timestamps();
           $table->foreignId('balade_id')->constrained()
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
