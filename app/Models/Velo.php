@@ -10,10 +10,17 @@ class Velo extends Model
     use HasFactory;
 
 
+  protected  $table = 'velos';
+  protected  $fillable=[
+      'categorie_id',
+      'nom',
+      'serie',
+      'description',
+      'quantite',
+      'prix_heure',
+      'Disponibilite',
 
-
-
-
+    ];
 
 
   public function Locations()
@@ -22,10 +29,14 @@ class Velo extends Model
     }
   public function Category()
   {
-    return $this->belongsTo(Category::class);
+    return $this->belongsTo(Category::class,'categorie_id','id');
   }
   public function Participations()
   {
     return $this->hasMany(Participation::class);
+  }
+  public function veloImages()
+  {
+    return $this->hasMany(VeloImage::class);
   }
 }
