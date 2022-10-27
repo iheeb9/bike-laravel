@@ -70,6 +70,12 @@
             @error('Disponibilite') <small class="text-danger">{{$message}}</small>  @enderror
           </div>
 
+          <div class="col-md-6 mb-3" >
+            {!! NoCaptcha::renderJs('fr', false) !!}
+            {!! NoCaptcha::display() !!}
+            <p>  @error('g-recaptcha-response') <small class="text-danger">{{$message}}</small>  @enderror</p>
+          </div>
+
 
           <div class=" mb-5">
             <button type="submit" class="btn btn-primary float-end">Ajouter</button>
