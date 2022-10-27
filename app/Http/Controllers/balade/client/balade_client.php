@@ -5,8 +5,10 @@ namespace App\Http\Controllers\balade\client;
 use App\Http\Controllers\Controller;
 use App\Models\Balade;
 use App\Models\Velo;
+use App\Models\VeloImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 
 class balade_client extends Controller
@@ -21,6 +23,7 @@ class balade_client extends Controller
       $ListBalade = Balade::latest()->paginate(4);
 
       return view('Client.content.Balade.list_balade',compact("ListBalade"));
+
     }
 
     /**
@@ -55,8 +58,9 @@ class balade_client extends Controller
 
       $balade=\App\Models\Balade::find($id );
       $velo=Velo::all();
-      return view('Client.content.Balade.showbalade',compact(["balade","velo"]));
-    }
+
+      $image=VeloImage::all();
+      return view('Client.content.Balade.showbalade',compact(["balade","velo","image"]));    }
 
     /**
      * Show the form for editing the specified resource.
@@ -91,4 +95,26 @@ class balade_client extends Controller
     {
         //
     }
+
+
+  public function participation(Request $request, Balade $balade)
+  {
+    $request->validate([
+        'velo_id' => 'required',
+      ]);
+    error_log($balade);
+    $participation=new \App\Models\Participation();
+    $participation->velo_id=$request->velo_id;
+    $participation->user_id=Auth::user()->id;
+    $participation->balade_id=$balade->id;
+    $participation->prixtotale=$balade->prix;
+
+    $participation->save();
+//    $newparticipation=$balade->nbre_participant+1;
+//    $balade->update($newparticipation);
+    return redirect()->route('clientbalade.index');
+
+  }
+
+
 }

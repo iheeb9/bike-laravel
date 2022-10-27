@@ -6,11 +6,19 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
-        <li ><a href="#">Home</a></li>
+
+        <li class="active"><a href="{{route('home')}}">Home</a></li>
+
         <li><a href="#">Location</a></li>
+
+        <li><a href="#">Tournois</a></li>
+
+
         <li><a href="#">Evennement</a></li>
-        <li><a href="#">Balade</a></li>
+        <li><a href="{{route('clientbalade.index')}}">Balade</a></li>
+
         <li><a href="#">Blog</a></li>
+
         @guest
           @if (Route::has('login'))
             <li class="nav-item">
@@ -25,6 +33,10 @@
             <a class="nav-link" href="{{ route('clientreview.index') }}">Review</a>
           </li>
         @endguest
+
+        <li><a href="{{url('/allvelo')}}">Velo</a></li>
+        <li><a href="{{url('/allcategories')}}">Categories</a></li>
+
         <li><a href="#">Association</a></li>
       </ul>
       <!-- /NAV -->

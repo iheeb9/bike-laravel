@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('participations', function (Blueprint $table) {
+            $table->charset = 'utf8'; 
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->string('nom');
+            $table->integer('prixtotale');
+
             $table->timestamps();
             $table->foreignId('user_id')->constrained()
             ->onDelete('restrict')
@@ -23,6 +26,7 @@ return new class extends Migration
              $table->foreignId('velo_id')->constrained()
             ->onDelete('restrict')
             ->onUpdate('restrict');
+
         });
     }
 

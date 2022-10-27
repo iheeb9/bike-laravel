@@ -25,11 +25,13 @@
 
       </div>
       <div class="card-body">
-        <form  method="POST" enctype="multipart/form-data">
+
+        <form action="{{ route('balade.update',$balade->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
-    @method('PUT')
+         @method('PUT')
           <div class="row mb-3 ">
-            <label class="col-sm-2 col-form-label " for="Titre">Titre </label>
+            <label class="col-sm-2 col-form-label " for="Titre">Titre</label>
+
             <div class="col-sm-4">
               <input type="text" value="{{ $balade->titre }}" disabled name="titre" class="form-control " id="Titree" placeholder="Titre.." />
               @error('titre')

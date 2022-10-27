@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('participations', function (Blueprint $table) {
           $table->foreignId('balade_id')->constrained()
-            ->onDelete('restrict')
+            ->onDelete('cascade')
             ->onUpdate('restrict');
         });
     }

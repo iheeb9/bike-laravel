@@ -12,7 +12,10 @@ class Balade extends Model
 
 
 
-    public function Participations()
+
+  protected $guarded = [];
+  public function Participations()
+
   {
     return $this->hasMany(Participation::class);
   }

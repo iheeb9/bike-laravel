@@ -87,15 +87,23 @@
           @endif
 
           <td>
+
+            <form  action="{{ route('balade.destroy',$balade) }}" method="POST">
+              @csrf
+              @method('DELETE')
+
             <div class="dropdown">
               <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
               <div class="dropdown-menu">
 
                 <a class="dropdown-item"  href="{{ route('balade.edit',$balade) }}"><i class="bx bx-edit me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="{{ route('review.create',$balade) }}"><i class="bx bx-edit me-1"></i> Make Review</a>
-                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+
+
+                <button  class="dropdown-item" type="submit"><i class="bx bx-edit me-1"></i>delete </button>
               </div>
             </div>
+            </form>
+
           </td>
         </tr>
         <tr>
