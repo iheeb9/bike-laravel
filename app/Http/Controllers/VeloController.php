@@ -30,14 +30,16 @@ class VeloController extends Controller
   public function ajouter(VeloFormRequest $request)
   {
 
-    /*    $velo = new Velo();
-      $velo-> nom =$request->nom;
-      $velo-> serie =$request->serie;
-      $velo-> categorie_id =$request->categorie_id;
-      $velo->save();
 
+    $request->validate([
+      'nom' => 'required',
+      'serie' => 'required',
+      'quantite' => 'required',
+      'description' => 'required',
+      'prix_heure' => 'required',
+      'Disponibilite' => 'required',
 
-    );*/
+    ]);
 
     $velo = new Velo();
     $velo->nom = $request->nom;
@@ -160,7 +162,7 @@ class VeloController extends Controller
     $data = DB::table('_velo_images')->distinct()
       ->join('velos','_velo_images.velo_id','=','velos.id')
       ->select('_velo_images.*','velos.*')
-      ->orderBy('velo_id','desc')->paginate(3);
+      ->orderBy('velo_id','desc')->paginate(8);
 
     return view('Client.content.home.store',compact('data','categories'));
          }

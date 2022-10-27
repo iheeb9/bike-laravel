@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Velo;
+use App\Models\VeloImage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +21,8 @@ class ParticipationFactory extends Factory
     {
 
       return [
-          'prixtotale' => $this->faker->randomNumber(2),
-         "velo_id" => \App\Models\Velo::factory()->create()->id,
+        'prixtotale' => $this->faker->randomNumber(2),
+        "velo_id" => \App\Models\Velo::factory()->has(VeloImage::factory(1))->create()->id,
          "user_id" => \App\Models\User::factory()->create()->id,
 
 

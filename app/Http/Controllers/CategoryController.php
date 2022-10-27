@@ -53,7 +53,7 @@ class CategoryController extends Controller
      }
 
     public  function categories (){
-      $data =DB::table('categories')->orderBy('id','desc')->paginate(2);
+      $data =DB::table('categories')->orderBy('id','desc')->paginate(6);
       return view('Client.content.home.categories',compact('data'));
     }
 

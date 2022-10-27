@@ -89,48 +89,5 @@
       "url": "admin/participations"
     }
       ]
-    },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {
-      "name": "Liste deroulante leliyheb ( fichier side bar fi resource / menu)",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
-      "slug": "pages-account-settings",
-      "submenu": [
-        {
-          "url": "#",
-          "name": "example",
-          "slug": "pages-account-settings-account"
-        }
-      ]
-    }
-
-  ]
+    }]
 }

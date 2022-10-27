@@ -206,10 +206,16 @@
             var idvelo = this.value;
             console.log(idvelo)
             let ea = {!! json_encode($velo->toArray()) !!};
+            let img = {!! json_encode($image->toArray()) !!};
+            console.log(img)
+             let im=img.filter(v=>v.velo_id==ea[idvelo-1].id)
+            let aff="/"+im[0].image
+            console.log(aff)
             if (ea[idvelo-1] !=null){
             $("#formulaire").append(
-                "<div class='col-md-12 order-details'><li class='review-link my'>"+ea[idvelo-1].nom+"</li>" +
-                "<div style='display: flex !important; justify-content: space-between'><li class='review-link d-f col'>PrixTotale:</li><h4 class='product-price' style='color: #D10024'>50d</h4></div>"+
+                "<div class='col-md-12 order-details'><li class='review-link my'>"+ea[idvelo-1].nom+"</li><br><hr>" +
+              "<div><img class='col-md-12' src="+aff+"></div><hr><hr><hr><hr><hr><hr><hr><br><br><br><hr>"+
+              "<div style='display: flex !important; justify-content: space-between'><li class='review-link d-f col'>PrixTotale:</li><h4 class='product-price' style='color: #D10024'>"+ea[idvelo-1].prix_heure+"</h4></div>"+
                 "</div>"
             );
          $("#valid").show();

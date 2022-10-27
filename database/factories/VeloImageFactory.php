@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class CategoryFactory extends Factory
+class veloImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-          'nom' => $this->faker->text(10),
-          'slug' => $this->faker->text(10),
-           'description' => $this->faker->text()
+            "image"=> "uploads/velo/16668719311.jpg"
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\balade\client;
 use App\Http\Controllers\Controller;
 use App\Models\Balade;
 use App\Models\Velo;
+use App\Models\VeloImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +58,8 @@ class balade_client extends Controller
 
       $balade=\App\Models\Balade::find($id );
       $velo=Velo::all();
-      return view('Client.content.Balade.showbalade',compact(["balade","velo"]));
+      $image=VeloImage::all();
+      return view('Client.content.Balade.showbalade',compact(["balade","velo","image"]));
     }
 
     /**

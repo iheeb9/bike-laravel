@@ -22,3 +22,4 @@ class BaladeSeeder extends Seeder
         ->create();
     }
 }
+
