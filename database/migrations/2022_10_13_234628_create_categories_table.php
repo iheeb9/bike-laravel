@@ -18,7 +18,9 @@ return new class extends Migration
             $table->collation = 'utf8_unicode_ci';
             $table->id();
             $table->string('nom');
-            $table->timestamps();
+          $table->string('slug');
+          $table->string('description');
+          $table->timestamps();
         });
     }
 
