@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('participations', function (Blueprint $table) {
             $table->id();
-            $table->string('prixtotale');
+            $table->integer('prixtotale');
 
             $table->timestamps();
             $table->foreignId('user_id')->constrained()

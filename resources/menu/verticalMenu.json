@@ -21,12 +21,9 @@
       "slug": "#",
       "url": "#"
     },
-	{
-      "name": "Balade",
-      "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "balade.index",
-      "url": "admin/balade"
-    },
+	
+
+	
 	{
       "name": "Assosiation",
       "icon": "menu-icon tf-icons bx bx-collection",
@@ -45,7 +42,24 @@
       "slug": "#",
       "url": "#"
     },
-
+{
+      "name": "Balade",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": ["balade.index","balade_participations"],
+      "submenu": [
+        {
+      "name": "Balade",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "balade.index",
+      "url": "admin/balade"
+    },{
+      "name": "Participation",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "balade_participations",
+      "url": "admin/participations"
+    }
+      ]
+    },
 
 
 

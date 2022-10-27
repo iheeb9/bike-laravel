@@ -22,6 +22,7 @@ class balade_client extends Controller
       $ListBalade = Balade::latest()->paginate(4);
 
       return view('Client.content.Balade.list_balade',compact("ListBalade"));
+
     }
 
     /**

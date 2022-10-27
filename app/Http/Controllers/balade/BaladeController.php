@@ -4,8 +4,10 @@ namespace App\Http\Controllers\balade;
 
 use App\Http\Controllers\Controller;
 use App\Models\Balade;
+use App\Models\Participation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 class BaladeController extends Controller
@@ -144,8 +146,24 @@ class BaladeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Balade $balade)
     {
-        //
+      $balade->delete();
+
+      return redirect()->route('balade.index')->with('success','successsssssssssssss');
     }
+
+  public function participations()
+  {
+    $participations = DB::table('participations')
+      ->join('balades', 'participations.balade_id', '=', 'balades.id')
+      ->join('velos', 'participations.velo_id', '=', 'velos.id')
+      ->join('users', 'participations.user_id', '=', 'users.id')
+      ->select('participations.prixtotale','users.name','balades.titre','velos.nom')
+      ->orderBy('participations.prixtotale')
+
+      ->paginate(5);
+
+    return view('content.Balade.participations',compact('participations'));
+  }
 }

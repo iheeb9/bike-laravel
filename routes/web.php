@@ -19,6 +19,7 @@ $controller_path = 'App\Http\Controllers';
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
   Route::resource('balade', \App\Http\Controllers\balade\BaladeController::class);
+  Route::get('/participations', $controller_path . '\balade\BaladeController@participations')->name('balade_participations');
 });
 
 //Client Route

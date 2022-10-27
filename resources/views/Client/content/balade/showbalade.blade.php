@@ -96,12 +96,13 @@
                   $i = false
                 @endphp
                 @foreach($balade->Participations as $participation)
-
+                 @if( \Illuminate\Support\Facades\Auth::check())
                   @if($participation->balade_id==$balade->id && $participation->user_id==Auth::user()->id)
                       <span class="product-available">deja reservé</span>
                     @php
                       $i =true;
                     @endphp
+                  @endif
                   @endif
                 @endforeach
                 @if($i==false)
@@ -178,6 +179,7 @@
 {{--              </label>--}}
 {{--            </div>--}}
 </div>
+
     <div   id="valid" hidden>
     <button    type='submit' class='primary-btn' style='margin-top: 50px;margin-bottom: -50px;margin-left: 110px'>valider</button>
     </div>

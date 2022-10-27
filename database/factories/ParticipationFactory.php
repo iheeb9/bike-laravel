@@ -19,7 +19,7 @@ class ParticipationFactory extends Factory
     {
 
       return [
-          'prixtotale' => $this->faker->name(),
+          'prixtotale' => $this->faker->randomNumber(2),
          "velo_id" => \App\Models\Velo::factory()->create()->id,
          "user_id" => \App\Models\User::factory()->create()->id,
 

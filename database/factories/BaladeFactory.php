@@ -18,8 +18,8 @@ class BaladeFactory extends Factory
     public function definition()
     {
         return [
-//          'titre' => $this->faker->name(),
-//          'description' => $this->faker->text(200),
+          'titre' => $this->faker->name(),
+          'description' => $this->faker->text(200),
           'nombre' => $this->faker->randomNumber(2),
           'jauge' => $this->faker->randomNumber(2),
           'prix' => $this->faker->randomNumber(2),
