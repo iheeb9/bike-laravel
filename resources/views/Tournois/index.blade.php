@@ -4,10 +4,10 @@
 <div class="row">
         <div class="col-lg-12 margin-tb pb-5    ">
             <div class="pull-left">
-                <h2> What is to come </h2>
+                <h2> Tournaments </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('tournois.create') }}"> Create New event </a>
+                <a class="btn btn-success" href="{{ route('tournois.create') }}"> Create New tournament </a>
             </div>
         </div>
     </div>

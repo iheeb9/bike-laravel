@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Associations;
 use App\Models\Tournoit;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,7 @@ class TournoisController extends Controller
     public function index()
     {
         $tournoisList = Tournoit::latest()->paginate(10);
-      
+        $associationsList = Associations::latest()->paginate(10);
         return view('tournois.index',compact('tournoisList'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

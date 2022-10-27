@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Associations;
 use Illuminate\Http\Request;
+use App\Http\Controllers\TournoisController;
 
 class AssociationController extends Controller
 {
@@ -37,7 +39,7 @@ class AssociationController extends Controller
      */
     public function create()
     {
-        return view('association.create');
+        return view('associations.create');
     }
 
     /**
@@ -48,20 +50,13 @@ class AssociationController extends Controller
      */
     public function store(Request $request)
     {
-     //   dd( $request->input('date'));
-
         $request->validate([
             'nom' => 'required',
-            'date' => 'required',
         ]);
         
         $t=Associations::create([
             'nom' => $request->nom,
-            'date' => $request->date,
-            'association_id' => $request->association_id,
         ]);
-       // Association::create($t);
-       
         return redirect()->route('association.index')
                         ->with('success','Event created successfully.');
     }
@@ -85,7 +80,7 @@ class AssociationController extends Controller
      */
     public function edit(Associations $association)
     {
-        return view('association.edit',compact('association'));
+        return view('associations.edit',compact('association'));
     }
 
     /**
@@ -98,8 +93,7 @@ class AssociationController extends Controller
     public function update(Request $request, Associations $association)
     {
         $request->validate([
-            'nom' => 'required',
-            'date' => 'required',
+            'nom' => 'required'
         ]);
       
         $association->update($request->all());
