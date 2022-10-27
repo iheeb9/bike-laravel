@@ -38,6 +38,8 @@ class VeloController extends Controller
       'description' => 'required',
       'prix_heure' => 'required',
       'Disponibilite' => 'required',
+      'g-recaptcha-response' => 'required'
+
 
     ]);
 

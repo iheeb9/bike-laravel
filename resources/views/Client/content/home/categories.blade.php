@@ -25,7 +25,7 @@
       @forelse($data as $c)
       <div class="col-sm-6 mb-4">
 
-        <div class="card border-1"  >
+        <div class="card border-1" style="margin-top: 5%"  >
           <h5 class="card-header">{{$c->nom}}</h5>
           <div class="card-body">
             <h5 class="card-title">Description</h5>
