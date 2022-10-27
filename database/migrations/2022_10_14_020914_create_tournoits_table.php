@@ -17,6 +17,8 @@ return new class extends Migration
             $table->charset = 'utf8'; 
             $table->collation = 'utf8_unicode_ci';
             $table->id();
+            $table->string('nom');
+            $table->date('date');
             $table->timestamps();
             $table->foreignId('association_id')->constrained()
             ->onDelete('restrict')

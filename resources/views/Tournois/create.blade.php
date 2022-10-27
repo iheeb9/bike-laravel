@@ -1,4 +1,5 @@
-@extends('events.layout')
+@extends('layouts/contentNavbarLayout')
+ 
   
 @section('content')
 <div class="row">
@@ -7,7 +8,7 @@
             <h2>Add New Product</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('evennements.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('tournois.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,15 +24,23 @@
     </div>
 @endif
    
-<form action="{{ route('evennements.store') }}" method="POST">
+<form action="{{ route('tournois.store') }}" method="POST">
     @csrf
   
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="nom" class="form-control" placeholder="Name">
+                <input required type="text" name="nom" class="form-control" placeholder="Name">
             </div>
+
+            <div class="form-group">
+                <strong>Date:</strong>
+            <input type="date" name="date" id="date" class="form-control"
+             style="width: 100%; display: inline;" ;" 
+             required ">
+
+</div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evennement;
+use App\Models\Associations;
 use Illuminate\Http\Request;
 
-class EvennementController extends Controller
+class AssociationController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +24,9 @@ class EvennementController extends Controller
      */
     public function index()
     {
-        $evennements = Evennement::latest()->paginate(5);
+        $associationList = Associations::latest()->paginate(5);
       
-        return view('events.index',compact('evennements'))
+        return view('associations.index',compact('associationList'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -27,7 +37,7 @@ class EvennementController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        return view('association.create');
     }
 
     /**
@@ -38,68 +48,77 @@ class EvennementController extends Controller
      */
     public function store(Request $request)
     {
+     //   dd( $request->input('date'));
+
         $request->validate([
             'nom' => 'required',
+            'date' => 'required',
         ]);
-      
-        Evennement::create($request->all());
+        
+        $t=Associations::create([
+            'nom' => $request->nom,
+            'date' => $request->date,
+            'association_id' => $request->association_id,
+        ]);
+       // Association::create($t);
        
-        return redirect()->route('evennements.index')
+        return redirect()->route('association.index')
                         ->with('success','Event created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Evennement  $evennement
+     * @param  \App\Models\Associations  
      * @return \Illuminate\Http\Response
      */
-    public function show(Evennement $evennement)
+    public function show(Associations $association)
     {
-        return view('events.show',compact('evennement'));
+        return view('association.show',compact('association'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Evennement  $evennement
+     * @param  \App\Models\Associations  
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evennement $evennement)
+    public function edit(Associations $association)
     {
-        return view('events.edit',compact('evennement'));
+        return view('association.edit',compact('association'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Evennement  $evennement
+     * @param  \App\Models\Associations  
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evennement $evennement)
+    public function update(Request $request, Associations $association)
     {
         $request->validate([
             'nom' => 'required',
+            'date' => 'required',
         ]);
       
-        $evennement->update($request->all());
+        $association->update($request->all());
       
-        return redirect()->route('evennements.index')
+        return redirect()->route('association.index')
                         ->with('success','Event updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Evennement  $evennement
+     * @param  \App\Models\Associations  
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Evennement $evennement)
+    public function destroy(Associations $association)
     {
-        $evennement->delete();
+        $association->delete();
        
-        return redirect()->route('evennements.index')
+        return redirect()->route('association.index')
                         ->with('success','Event deleted successfully');
     }
 }

@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EvennementController;
+use App\Http\Controllers\TournoisController;
+use App\Http\Controllers\AssociationController;
 use App\Models\Evennement;
+use App\Models\Tournoit;
+use App\Models\Associations;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,11 +33,8 @@ Auth::routes();
 
 
 //evenements
-$ev1 = new Evennement();
-$ev1->nom = "test";
-$ev1->id = 1;
-$Array = array($ev1);
-Route::resource('evennements', EvennementController::class);
+Route::resource('tournois', tournoisController::class);
+Route::resource('association', AssociationController::class);
 
 //Route::view('/evennements', 'events.index', ['evennements' => $Array]);
 

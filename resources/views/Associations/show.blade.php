@@ -1,4 +1,5 @@
-@extends('events.layout')
+@extends('layouts/contentNavbarLayout')
+ 
   
 @section('content')
     <div class="row">
@@ -7,7 +8,7 @@
                 <h2> Show Product</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('evennements.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('association.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -16,13 +17,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                {{ $evennement->nom }}
+                {{ $association->nom }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ID:</strong>
-                {{ $evennement->id }}
+                {{ $association->id }}
             </div>
         </div>
     </div>

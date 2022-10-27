@@ -1,4 +1,4 @@
-@extends('events.layout')
+@extends('layouts/contentNavbarLayout')
    
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2>Edit Event</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('evennements.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('tournois.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('evennements.update',$evennement->id) }}" method="POST">
+    <form action="{{ route('tournois.update',$tournois->id) }}" method="POST">
         @csrf
         @method('PUT')
    
@@ -31,7 +31,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="nom" value="{{ $evennement->nom }}" class="form-control" placeholder="Name">
+                    <input type="text" name="nom" value="{{ $tournois->nom }}" class="form-control" placeholder="Name">
                 </div>
             </div>
     
