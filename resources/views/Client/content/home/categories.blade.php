@@ -24,16 +24,16 @@
     <div class="row">
       @forelse($data as $c)
       <div class="col-sm-6 mb-4">
-        <div class="card" >
-          <div class="card-block" >
-            <h3 class="card-title"> Nom: </h3> <h5>{{$c->nom}}</h5>
-            <h3 class="card-title"> Description : </h3> <h5>{{$c->description}}</h5>
+
+        <div class="card border-1"  >
+          <h5 class="card-header">{{$c->nom}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">Description</h5>
+            <p class="card-text">{{$c->description}}</p>
             <a href="{{url('/allcategories/'.$c->slug)}}" class="btn btn-primary">Voir tous les produits </a>
           </div>
         </div>
-        <ul class="text-center">
-          {{$data->links()}}
-        </ul>
+
       </div>
       @empty
         <div class="col-md-12">
@@ -41,7 +41,9 @@
         </div>
       @endforelse
     </div>
-
+      <ul class="text-center">
+        {{$data->links()}}
+      </ul>
     </div>
   </div>
   <style >

@@ -16,7 +16,7 @@ class VeloController extends Controller
   {
     $categories = Category::all();
     //$data = Velo::all();
-    $data =DB::table('velos')->orderBy('id','desc')->paginate(1);
+    $data =DB::table('velos')->orderBy('id','desc')->paginate(4);
 
     return view('content.velo.ListeVelo', compact('data'));
   }
@@ -40,14 +40,13 @@ class VeloController extends Controller
     );*/
 
     $velo = new Velo();
-    $velo->nom = $request->validate(['nom'=>'required']);
-    $velo->serie = $request->validate(['serie'=>'required']);
-    $velo->quantite = $request->validate(['quantite'=>'required']);
-    $velo->description = $request->validate(['description'=>'required']);
-    $velo->categorie_id = $request->validate(['categorie_id'=>'required']);
-    $velo->prix_heure = $request->validate(['prix_heure'=>'required']);
-    $velo->Disponibilite = $request->validate(['Disponibilite'=>'required']);
-
+    $velo->nom = $request->nom;
+    $velo->serie = $request->serie;
+    $velo->quantite = $request->quantite;
+    $velo->description = $request->description;
+    $velo->categorie_id = $request->categorie_id;
+    $velo->prix_heure = $request->prix_heure;
+    $velo->Disponibilite = $request->Disponibilite;
 
     $velo->save();
     if ($request->hasFile('image')) {
@@ -67,34 +66,7 @@ class VeloController extends Controller
 
     }
 
-    /*$validatedData = $request->validated();
-    $category = Category::findOrFail(['categorie_id']);
-    $velo = $category->Velo()->create([
-      'categorie_id'=> $validatedData['categorie_id'],
-           'nom'=> $validatedData['nom'],
-          'serie'=> $validatedData['serie'],
-          'quantite'=> $validatedData['quantite'],
-          'description'=> $validatedData['description'],
-          'prix_heure'=> $validatedData['prix_heure'],
-          'Disponibilite'=> $validatedData['Disponibilite'],
-        ]);
-       if($request->hasFile('image')){
-          $uploadPath = 'uploads/velo/';
-            $i= 1;
-          foreach ($request->file('image') as $imageFile){
-            $extention =$imageFile->getClientOriginalExtension();
-            $filename =time().$i++.'.'.$extention;
-            $imageFile->move($uploadPath,$filename);
-            $finalImagePathName=$uploadPath.$filename;
-
-            $velo->veloImages()->create([
-              'velo_id'=>$velo->id,
-              'image'=>$finalImagePathName,
-            ]);
-          }
-        }*/
-
-    return redirect('/admin/velo')->with('message', 'Velo ajouter avec succee');
+    return redirect('admin/velo')->with('message', 'Velo ajouter avec succee');
 
 
   }
@@ -115,13 +87,13 @@ class VeloController extends Controller
 
     if ($velo) {
 
-      $velo->nom = $request->validate(['nom'=>'required']);
-      $velo->serie = $request->validate(['serie'=>'required']);
-      $velo->quantite = $request->validate(['quantite'=>'required']);
-      $velo->description = $request->validate(['description'=>'required']);
-      $velo->categorie_id = $request->validate(['categorie_id'=>'required']);
-      $velo->prix_heure = $request->validate(['prix_heure'=>'required']);
-      $velo->Disponibilite = $request->validate(['Disponibilite'=>'required']);
+      $velo->nom = $request->nom;
+      $velo->serie = $request->serie;
+      $velo->quantite = $request->quantite;
+      $velo->description = $request->description;
+      $velo->categorie_id = $request->categorie_id;
+      $velo->prix_heure = $request->prix_heure;
+      $velo->Disponibilite = $request->Disponibilite;
        $velo->update();
       if ($request->hasFile('image')) {
         $uploadPath = 'uploads/velo/';
@@ -182,10 +154,13 @@ class VeloController extends Controller
 
   public function store (){
     $categories = Category::all();
-  $data = DB::table('_velo_images')->distinct()
+    $category_slug ="";
+    $cat=Category::where ('slug',$category_slug)->first();
+
+    $data = DB::table('_velo_images')->distinct()
       ->join('velos','_velo_images.velo_id','=','velos.id')
       ->select('_velo_images.*','velos.*')
-      ->orderBy('velo_id','desc')->paginate(2);
+      ->orderBy('velo_id','desc')->paginate(3);
 
     return view('Client.content.home.store',compact('data','categories'));
          }

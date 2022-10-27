@@ -44,8 +44,6 @@
             <th>Nom</th>
             <th>Slug</th>
             <th>Description</th>
-            <th>meta title</th>
-            <th>meta keyword</th>
           </tr>
           </thead>
           <tbody>
@@ -56,8 +54,6 @@
                 <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$c->nom}}</strong></td>
                 <td>{{$c->slug}}</td>
                 <td>{{$c->description}}</td>
-                <td><span class="badge bg-label-primary me-1">{{$c->meta_title}}</span></td>
-                <td>{{$c->meta_keyword}}</td>
                 <td>
                   <a href="{{ url ('admin/category/'.$c->id.'/edit') }}" class="btn btn-success">Modifier</a>
                   <a href="{{url('admin/category/'.$c->id.'/delete')}}" onclick="return confirm('Supprimer !!!!!')"  class="btn btn-danger">Supprimer</a>

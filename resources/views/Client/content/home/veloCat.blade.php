@@ -6,7 +6,44 @@
     <div class="container mb-3">
       <div class="mb-3">
         <h4>cat velo</h4>
+        <div id="aside" class="col-md-3">
+          <!-- aside Widget -->
+          <div class="aside">
+
+
+            <h3 class="aside-title" style="color:red">Categories</h3>
+            <!-- NAV -->   @foreach($categories as $category)
+
+              <div class="checkbox-filter">
+                <div class="input-checkbox">
+                  <input type="checkbox" id="category-1">
+                  <label for="category-1">
+                    <span></span>
+                    <a href="{{url('/allcategories/'. $category->slug)}}">{{$category->nom}}</a>
+
+                  </label>
+                </div>
+              </div>
+            @endforeach
+
+            <div class="checkbox-filter">
+
+
+
+            </div>
+          </div>
       </div>
+        <div id="store" class="col-md-9">
+          <!-- store top filter -->
+          <div class="store-filter clearfix">
+
+
+          </div>
+          <!-- /store top filter -->
+
+          <!-- store products -->
+
+          <div class="row">
     @forelse($vel as $v )
       <div class="col-md-4 col-xs-6">
         <div class="product">
@@ -39,7 +76,10 @@
       </div>
       @endforelse
     </div>
-  </div>
+        </div>
+      </div>
+
+      </div>
   <div>
     <br>
     <br>

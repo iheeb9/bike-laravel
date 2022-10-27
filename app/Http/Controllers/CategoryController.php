@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
      public function index(){
-       $data =DB::table('categories')->orderBy('id','desc')->paginate(1);
+       $data =DB::table('categories')->orderBy('id','desc')->paginate(2);
         return view('content.category.ListeCategories',compact('data'));
      }
 
@@ -26,27 +26,12 @@ class CategoryController extends Controller
             $category->nom =$validatedData['nom'];
             $category->slug =Str::slug($validatedData['slug']);
             $category->description =$validatedData['description'];
-            $category->meta_title =$validatedData['meta_title'];
-            $category->meta_description =$validatedData['meta_description'];
-            $category->meta_keyword =$validatedData['meta_keyword'];
               //dump($category);
             $category->save();
-
-       /* $category = new Category();
-        $category-> nom =$request->nom;
-        $category-> slug =$request->slug;
-        $category-> description =$request->description;
-        $category-> meta_title =$request->meta_title;
-        $category-> meta_description =$request->meta_description;
-        $category-> meta_keyword =$request->meta_keyword;*/
-
-       $category->save();
-
             return redirect('/admin/category')->with('message','Categorie ajouter avec succès');
      }
 
      public  function editT(Category $category){
-       dump($category);
 
        return view ('content.category.edit',compact('category'));
      }
@@ -59,9 +44,6 @@ class CategoryController extends Controller
        $category->nom =$validatedData['nom'];
        $category->slug =Str::slug($validatedData['slug']);
        $category->description =$validatedData['description'];
-       $category->meta_title =$validatedData['meta_title'];
-       $category->meta_description =$validatedData['meta_description'];
-       $category->meta_keyword =$validatedData['meta_keyword'];
        //dump($category);
 
        $category->update();
@@ -76,10 +58,11 @@ class CategoryController extends Controller
     }
 
     public function productsofcategorie ($category_slug){
-       $cat=Category::where ('slug',$category_slug)->first();
+      $categories = Category::all();
+      $cat=Category::where ('slug',$category_slug)->first();
        if($cat){
-          $vel=$cat->Velos()->paginate(2);
-          return view ('Client.content.home.veloCat',compact('vel','cat'));
+          $vel=$cat->Velos()->paginate(3);
+          return view ('Client.content.home.veloCat',compact('vel','cat','categories'));
        }else{
          return redirect()->back();
        }

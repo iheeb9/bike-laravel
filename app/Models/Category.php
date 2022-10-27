@@ -15,10 +15,7 @@ class Category extends Model
       'nom',
       'slug',
       'description',
-      'meta_title',
-      'meta_keyword',
-      'meta_description',
-      'status',
+
     ];
 
   public function Velos()

@@ -71,7 +71,7 @@
                 <input type="checkbox" id="category-1">
                 <label for="category-1">
                   <span></span>
-                  <a href="{{url('/allcategories/'.$category->slug)}}">{{$category->nom}}</a>
+                  <a href="{{url('/allcategories/'. $category->slug)}}">{{$category->nom}}</a>
 
                 </label>
               </div>
