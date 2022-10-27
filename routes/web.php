@@ -52,6 +52,10 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
 
   });
 
+
+Route::resource('tournois', tournoisController::class);
+Route::resource('association', AssociationController::class);
+
 });
 
 //Client Route
@@ -68,9 +72,7 @@ Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController
 Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
 //Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
-//evenements
-Route::resource('tournois', tournoisController::class);
-Route::resource('association', AssociationController::class);
+
 
 //Route::view('/evennements', 'events.index', ['evennements' => $Array]);
 

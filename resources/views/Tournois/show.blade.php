@@ -17,19 +17,19 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                {{ $tournois->nom }}
+                {{ $tournoi->nom }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Date:</strong>
-                {{ $tournois->date }}
+                {{ $tournoi->date }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ID:</strong>
-                {{ $tournois->id }}
+                {{ $tournoi->id }}
             </div>
         </div>
     </div>

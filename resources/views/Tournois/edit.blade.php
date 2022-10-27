@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('tournois.update',$tournois->id) }}" method="POST">
+    <form action="{{ route('tournois.update',$tournoi->id) }}" method="POST">
         @csrf
         @method('PUT')
    
@@ -31,8 +31,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="nom" value="{{ $tournois->nom }}" class="form-control" placeholder="Name">
+                    <input type="text" name="nom" value="{{ $tournoi->nom }}" class="form-control" placeholder="Name">
                 </div>
+                <div class="form-group pt-3">
+                <strong>Date:</strong>
+                <input required value="{{ $tournoi->date }}" type="date" name="date" class="form-control" placeholder="date">
+            </div>
             </div>
     
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
