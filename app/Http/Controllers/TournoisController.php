@@ -77,7 +77,8 @@ class TournoisController extends Controller
      */
     public function show(Tournoit $tournoi)
     {
-        return view('tournois.show',compact('tournoi'));
+        $association = Associations::find($tournoi->association_id);
+        return view('tournois.show',compact('tournoi','association'));
     }
 
     /**
@@ -120,6 +121,7 @@ class TournoisController extends Controller
      */
     public function destroy(Tournoit $tournoi)
     {
+        
         $tournoi->delete();
        
         return redirect()->route('tournois.index')

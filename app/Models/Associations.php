@@ -13,7 +13,7 @@ class Associations extends Model
 
   public function Tournoit()
   {
-    return $this->hasMany(Tournoit::class);
+    return $this->hasMany(Tournoit::class, 'association_id', 'id');
   }
   public function Evennements()
   {

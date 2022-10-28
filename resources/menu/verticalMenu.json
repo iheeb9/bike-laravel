@@ -58,7 +58,7 @@
       "name": "Assosiations",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "/admin/associations"
+      "url": "/admin/association"
     },
     {
       "name": "tournois",

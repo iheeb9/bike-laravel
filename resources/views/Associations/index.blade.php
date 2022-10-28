@@ -12,6 +12,8 @@
         </div>
     </div>
    
+
+    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -34,7 +36,7 @@
             <td>{{ $association->nom }}</td>
             <td>
             <form action="{{ route('association.destroy',$association->id) }}" method="POST">
-            <a class="btn btn-info" href="{{ route('association.show',$association->id) }}">Show</a>
+            <a class="btn btn-info" href="{{ route('association.show',$association->id) }}">Show ss</a>
             </form>
             </td>
             <td>

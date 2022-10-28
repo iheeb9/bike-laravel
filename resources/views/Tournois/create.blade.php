@@ -16,7 +16,7 @@
 <div class="col-6">
 <div class="card mb-4 " > 
 <h5 class="card-header">  
-    <a href="{{ route('tournois.index') }}" class="btn btn-primary btn-md"  float-start >Tournois iations list</a></h5>
+    <a href="{{ route('tournois.index') }}" class="btn btn-primary btn-md"  float-start >Tournois  list</a></h5>
 <div class="card-body demo-vertical-spacing demo-only-element" > 
 @if ($errors->any())
     <div class="alert alert-danger">
