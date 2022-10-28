@@ -36,7 +36,7 @@
             <td>{{ $association->nom }}</td>
             <td>
             <form action="{{ route('association.destroy',$association->id) }}" method="POST">
-            <a class="btn btn-info" href="{{ route('association.show',$association->id) }}">Show ss</a>
+            <a class="btn btn-info" href="{{ route('association.show',$association->id) }}">Show</a>
             </form>
             </td>
             <td>

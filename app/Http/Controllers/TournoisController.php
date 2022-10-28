@@ -24,11 +24,30 @@ class TournoisController extends Controller
      */
     public function index()
     {
-        $tournoisList = Tournoit::latest()->paginate(10);
+  
+      $tournoisList = Tournoit::latest()->paginate(5);
+
+  
       
+
         return view('tournois.index',compact('tournoisList'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+ /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexFront()
+    {
+
+      $tournoisList = Tournoit::latest()->paginate(5);
+
+        return view('client.content.tournois.index',compact('tournoisList'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
 
     /**
      * Show the form for creating a new resource.

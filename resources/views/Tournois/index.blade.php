@@ -9,6 +9,9 @@
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('tournois.create') }}"> Create New tournament </a>
             </div>
+            <div class="pull-right pt-3">
+                <a class="btn btn-success" href="{{ route('tournoisFront') }}"> show user tournaments </a>
+            </div>
         </div>
     </div>
    

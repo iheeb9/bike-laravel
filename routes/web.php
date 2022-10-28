@@ -72,7 +72,7 @@ Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController
 Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
 //Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
-
+Route::get('/tournois', [App\Http\Controllers\tournoisController::class, 'indexFront'])->name('tournoisFront');
 
 //Route::view('/evennements', 'events.index', ['evennements' => $Array]);
 
