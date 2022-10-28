@@ -14,12 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
+            $table->charset = 'utf8'; 
+            $table->collation = 'utf8_unicode_ci';
           $table->id();
           $table->string('nom');
+          $table->date('date');
+          $table->string('Description');
+          $table->string('image');
           $table->timestamps();
           $table->foreignId('balade_id')->constrained()
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

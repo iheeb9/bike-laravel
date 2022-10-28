@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\App;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Velo>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\velo>
  */
-class VeloFactory extends Factory
+class veloFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,12 +18,15 @@ class VeloFactory extends Factory
      */
     public function definition()
     {
-        $category = \App\Models\Category::pluck('id')->toArray();
-
         return [
-            'nom' => $this->faker->name(),
-            'categorie_id' =>$this->faker->randomElement($category ),
 
+          'nom' => $this->faker->text(10),
+          "categorie_id" => \App\Models\Category::factory()->create()->id,
+          'description' => $this->faker->text(),
+          'quantite' => $this->faker->randomNumber(2),
+          'prix_heure' => $this->faker->randomNumber(2),
+          'Disponibilite' => $this->faker->text(10),
+          'serie' => $this->faker->text(10),
 
 
         ];

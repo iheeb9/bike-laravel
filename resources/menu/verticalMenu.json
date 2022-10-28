@@ -13,7 +13,37 @@
       "name": "Velo",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "#"
+      "url": "#",
+     "submenu": [
+       {
+         "url": "/admin/velo",
+         "name": "Liste des velo",
+         "slug": "extended-ui-perfect-scrollbar"
+       },
+       {
+         "url": "/admin/velo/create",
+         "name": "Ajouter Velo",
+         "slug": "extended-ui-perfect-scrollbar"
+       }
+     ]
+    },
+    {
+      "name": "Categories",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "#",
+      "submenu": [
+        {
+          "url": "/admin/category",
+          "name": "Liste Categorie",
+          "slug": "extended-ui-perfect-scrollbar"
+        },
+        {
+          "url": "/admin/category/create",
+          "name": "Ajouter categories",
+          "slug": "extended-ui-perfect-scrollbar"
+        }
+      ]
     },
 
     {
@@ -33,23 +63,26 @@
         }
       ]
     },
+	
+
+	
 	{
-      "name": "Balade",
+      "name": "Assosiations",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "#"
+      "url": "/admin/association"
+    },
+    {
+      "name": "tournois",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "/admin/tournois"
     },
 	{
-      "name": "Assosiation",
+      "name": "Review",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "#"
-    },
-	{
-      "name": "Blog",
-      "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "#",
-      "url": "#"
+      "url": "/admin/review"
     },
 	{
       "name": "Evennnements",
@@ -57,48 +90,24 @@
       "slug": "#",
       "url": "#"
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {
-      "name": "Liste deroulante leliyheb ( fichier side bar fi resource / menu)",
+{
+      "name": "Balade",
       "icon": "menu-icon tf-icons bx bx bx-dock-top",
-      "slug": "pages-account-settings",
+      "slug": ["balade.index","balade_participations"],
       "submenu": [
         {
-          "url": "#",
-          "name": "example",
-          "slug": "pages-account-settings-account"
-        }
-      ]
+      "name": "Balade",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "balade.index",
+      "url": "admin/balade"
+    },{
+      "name": "Participation",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "balade_participations",
+      "url": "admin/participations"
     }
-    
-  ]
+
+      ]
+    }]
+
 }

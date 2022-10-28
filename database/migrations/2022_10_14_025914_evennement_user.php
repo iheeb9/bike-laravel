@@ -14,6 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('evennement_user', function (Blueprint $table) {
+          $table->charset = 'utf8'; 
+          $table->collation = 'utf8_unicode_ci';
           $table->id();
           $table->foreignId('evennement_id')->constrained()
             ->onDelete('cascade')

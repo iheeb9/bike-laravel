@@ -14,9 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
+            $table->charset = 'utf8'; 
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
             $table->string('nom');
-            $table->timestamps();
+          $table->string('slug');
+          $table->string('description');
+          $table->timestamps();
         });
     }
 

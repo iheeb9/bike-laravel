@@ -8,7 +8,7 @@
       </span>
       <span class="app-brand-logo demo " > <img   src="{{asset('assets/img/icons/bikee.png')}}" style="" width="20%"  alt="">
 </span>
-      aaaaaaaa
+
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-autod-block d-xl-none">

@@ -14,9 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('velos', function (Blueprint $table) {
+            $table->charset = 'utf8'; 
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
+            //$table->unsignedBigInteger('category_id');
+
+
             $table->string('nom');
-            $table->timestamps();
+            $table->String('serie');
+            $table->longText('description')->default('');
+            $table->integer('quantite')->default();
+            $table->float('prix_heure')->default();
+            $table->String('Disponibilite')->default('');
+
+
+          //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+          $table->timestamps();
         });
     }
 

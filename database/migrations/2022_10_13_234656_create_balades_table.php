@@ -14,8 +14,29 @@ return new class extends Migration
     public function up()
     {
         Schema::create('balades', function (Blueprint $table) {
+            $table->charset = 'utf8'; 
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->string('nom');
+            $table->string('titre');
+            $table->string('description');
+            $table->string('info_billetterie');
+            $table->integer('nombre');
+            $table->integer('jauge');
+            $table->integer('nbre_participant')->default(0);
+            $table->integer('prix');
+            $table->integer('distance');
+            $table->string('guide_accompagnateur');
+            $table->string('depart');
+            $table->string('arrive');
+            $table->date('date');
+            $table->string('Services');
+            $table->string('disponible');
+
+             $table->string('image');
+
+
+
+
             $table->timestamps();
         });
     }

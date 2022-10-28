@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Location\TrackingController;
+use App\Http\Controllers\TournoisController;
+use App\Http\Controllers\AssociationController;
+use App\Models\Evennement;
+use App\Models\Tournoit;
+use App\Models\Associations;
+use App\Http\Controllers\Client\EventController;
+use App\Http\Controllers\WebScrapping\ScraperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +24,14 @@ $controller_path = 'App\Http\Controllers';
 
 // Admin Route
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
+  //*******-event admin  ******/
+  Route::resource('events',EventController::class);
+  Route::any('/events/delete/{id}', $controller_path . '\Client\EventController@destroy')->name('events.delete');
+  Route::any('/events/edit/{id}', $controller_path . '\Client\EventController@edit2')->name('events.edit2');
+  Route::any('/events/update/{id}', $controller_path . '\Client\EventController@update2')->name('events.update2');
+
+  
+    //*******-event admin  ******/
 
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
   Route::resource('/location',\App\Http\Controllers\Location\LocationBackOfficeController::class);
@@ -27,20 +42,81 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($
   Route::get('/ajax/track/{id}', [TrackingController::class, 'ajaxid']);
 
 
+  Route::resource('review',\App\Http\Controllers\ReviewController::class);
+
+  Route::resource('post', \App\Http\Controllers\PostController::class);
+
+
+
+
+  Route::resource('balade', \App\Http\Controllers\balade\BaladeController::class);
+  Route::get('/participations', $controller_path . '\balade\BaladeController@participations')->name('balade_participations');
+
+
+
+  //Category Routes
+Route::controller(App\Http\Controllers\CategoryController::class)->group(function () {
+  Route::get('/category', 'index');
+  Route::get('/category/create','create');
+  Route::post('/category','ajouter');
+  Route::get('/category/{category}/edit','editT');
+  Route::put('/category/{category}','update');
+  Route::get('/category/{cat_id}/delete','delete');
+
+});
+
+    //Velo Routes
+  Route::controller(App\Http\Controllers\VeloController::class)->group(function () {
+    Route::get('/velo', 'index');
+    Route::get('/velo/create','create');
+    Route::post('/velo','ajouter');
+    Route::get('/velo/{velo}/edit','editT');
+    Route::put('/velo/{velo}','update');
+    Route::get('/velo/{velo_id}/delete','delete');
+    Route::get('/velo-image/{velo_image_id}/delete','destroyImage');
+
+
+
+  });
+
+
+Route::resource('tournois', tournoisController::class);
+Route::resource('association', AssociationController::class);
+
 });
 
 //Client Route
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
+Route::resource('clientbalade', \App\Http\Controllers\balade\client\balade_client::class);
+
+Route::resource('clientreview',\App\Http\Controllers\ReviewFrontController::class);
+Route::resource('clientpost',\App\Http\Controllers\PostController::class);
+
+
+Route::post('/addparticipation/{balade}', $controller_path . '\balade\client\balade_client@participation')->name('addparticipation');
 Auth::routes();
+Route::get('/velofront',[App\Http\Controllers\VeloController::class, 'indexfront']);
+Route::get('/allcategories',[App\Http\Controllers\CategoryController::class, 'categories']);
+Route::get('/allcategories/{category_slug}',[App\Http\Controllers\CategoryController::class, 'productsofcategorie']);
+Route::get('/allvelo',[App\Http\Controllers\VeloController::class, 'store']);
+Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController::class,'details']);
+Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
+//Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
 Route::resource('/c_location', \App\Http\Controllers\Location\client\locationFrontController::class);
 
 
+//Route::view('/evennements', 'events.index', ['evennements' => $Array]);
 
 
+//event , sponspor client side 
 
+Route::resource('scrap',ScraperController::class);
+Route::get('sponspor','App\Http\Controllers\WebScrapping\ScraperController@showsponsor');
 
+Route::get('/events', $controller_path . '\Client\EventClientController@index')->name('events');
+Route::get('/events/{id}', $controller_path . '\Client\EventClientController@show')->name('events.show.client');
 
 
 
@@ -93,7 +169,7 @@ Route::get('/icons/boxicons', $controller_path . '\icons\Boxicons@index')->name(
 
 // form elements
 Route::get('/forms/basic-inputs', $controller_path . '\form_elements\BasicInput@index')->name('forms-basic-inputs');
-Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
+  Route::get('/forms/input-groups', $controller_path . '\form_elements\InputGroups@index')->name('forms-input-groups');
 
 // form layouts
 Route::get('/form/layouts-vertical', $controller_path . '\form_layouts\VerticalForm@index')->name('form-layouts-vertical');

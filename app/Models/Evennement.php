@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Evennement extends Model
 {
     use HasFactory;
+    protected $fillable = ['nom'];
 
 
   public function Associations()
