@@ -6,6 +6,8 @@ use App\Http\Controllers\AssociationController;
 use App\Models\Evennement;
 use App\Models\Tournoit;
 use App\Models\Associations;
+use App\Http\Controllers\Client\EventController;
+use App\Http\Controllers\WebScrapping\ScraperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +23,15 @@ $controller_path = 'App\Http\Controllers';
 
 // Admin Route
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($controller_path) {
+  //*******-event admin  ******/
+  Route::resource('events',EventController::class);
+  Route::any('/events/delete/{id}', $controller_path . '\Client\EventController@destroy')->name('events.delete');
+  Route::any('/events/edit/{id}', $controller_path . '\Client\EventController@edit2')->name('events.edit2');
+  Route::any('/events/update/{id}', $controller_path . '\Client\EventController@update2')->name('events.update2');
+
+  
+    //*******-event admin  ******/
+
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
 
   Route::resource('review',\App\Http\Controllers\ReviewController::class);
@@ -90,7 +101,13 @@ Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct
 //Route::view('/evennements', 'events.index', ['evennements' => $Array]);
 
 
+//event , sponspor client side 
 
+Route::resource('scrap',ScraperController::class);
+Route::get('sponspor','App\Http\Controllers\WebScrapping\ScraperController@showsponsor');
+
+Route::get('/events', $controller_path . '\Client\EventClientController@index')->name('events');
+Route::get('/events/{id}', $controller_path . '\Client\EventClientController@show')->name('events.show.client');
 
 
 
