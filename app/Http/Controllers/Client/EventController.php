@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evennement;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -67,7 +68,9 @@ class EventController extends Controller
             'start_date' => $start_date,
             'end_date' => $end_date
         ]);
-
+   // add to event_user 
+   $values = array('evennement_id' => 1,'user_id' =>1 );
+   DB::table('evennement_user')->insert($values);
         session()->flash('success', 'Event ADDED successfully');
 
         return redirect()->route('events.index');
