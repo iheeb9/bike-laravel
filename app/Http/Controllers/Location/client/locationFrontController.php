@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Location;
+namespace App\Http\Controllers\Location\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Location;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Velo;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class LocationBackOfficeController extends Controller
+class locationFrontController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +19,19 @@ class LocationBackOfficeController extends Controller
      */
     public function index()
     {
-        $ListLocation = Location::latest()->paginate(5);
-        return view('content.location.view-location-back',compact("ListLocation"));
-    }
+        $ListUser = User::all();
+        $ListVelo = Velo::all();
+        $mytime = Carbon::now()->format('Y-m-d');;
+        $id = Auth::id();
+        $ListLocation = Location::latest()->where('user_id',$id)->paginate(3);
+        return view('Client.content.location.location')
+        ->with(compact("ListLocation"))
+        ->with(compact('ListUser'))
+        ->with(compact('ListVelo'))
+        ->with(compact('mytime'))
+        ;  
+      }
 
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -34,12 +43,11 @@ class LocationBackOfficeController extends Controller
         $ListVelo = Velo::all();
         $mytime = Carbon::now()->format('Y-m-d');;
 
-        return view('content.location.AddLocation')
+        return view('Client.content.location.addlocation')
         ->with(compact('ListUser'))
         ->with(compact('ListVelo'))
         ->with(compact('mytime'))
-        ;  
-    }
+        ;      }
 
     /**
      * Store a newly created resource in storage.
@@ -50,17 +58,14 @@ class LocationBackOfficeController extends Controller
     public function store(Request $request)
     {
         $Post = $this->validate($request,[
-            'user'=>'required',
             'velo'=>'required',
             'date_start' => 'required|date',
             'date_end' => 'date|after:date_start'
                 ]);
         $date_start = Carbon::parse($request->date_start)->format('Y-m-d');
         $date_end = Carbon::parse($request->date_end)->format('Y-m-d');
-        $location = Location::create(['date_start' => $date_start, 'date_end' => $date_end, 'user_id' => $request->user,'velo_id' => $request->velo]);
-        return redirect('/admin/location');
-
-
+        $location = Location::create(['date_start' => $date_start, 'date_end' => $date_end, 'user_id' => Auth::user()->id,'velo_id' => $request->velo]);
+        return redirect('/c_location');
     }
 
     /**
@@ -77,25 +82,23 @@ class LocationBackOfficeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(Location $location)
+    public function edit($id)
     {
+        $location = Location::find($id);
         $ListUser = User::all();
         $ListVelo = Velo::all();
         $mytime = Carbon::now()->format('Y-m-d');;
 
         $location->user_id = User::find( $location->user_id);
         $location->velo_id = Velo::find( $location->velo_id);
-        return view('content.location.editLocation')
+        return view('Client.content.location.editlocation')
         ->with(compact('location'))
         ->with(compact('ListUser'))
         ->with(compact('ListVelo'))
-        ->with(compact('mytime'))
-        ;  
-
-    }
+        ->with(compact('mytime'));
+        }
 
     /**
      * Update the specified resource in storage.
@@ -104,22 +107,24 @@ class LocationBackOfficeController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(Request $request,  $id)
     {
         $Post = $this->validate($request,[
-            'user'=>'required',
             'velo'=>'required',
             'date_start' => 'required|date',
             'date_end' => 'date|after:date_start'
                 ]);
+
+        $location=Location::find($id);
         $date_start = Carbon::parse($request->date_start)->format('Y-m-d');
         $date_end = Carbon::parse($request->date_end)->format('Y-m-d');
-         $location ->update(['date_start' => $date_start, 'date_end' => $date_end, 'user_id' => $request->user,'velo_id' => $request->velo]);
+        
+         $location ->update(['date_start' => $date_start, 'date_end' => $date_end, 'user_id' => Auth::user()->id,'velo_id' => $request->velo]);
+        
+
          $location->save();
-         return redirect('/admin/location');
-            
-            
-    }
+         return redirect('/c_location');
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -127,17 +132,8 @@ class LocationBackOfficeController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy(Location $location)
     {
-        $location = Location::findOrFail($id);
-        $location->delete();
-
-        if($location){
-            //redirect dengan pesan sukses
-            return redirect()->route('location.index')->with(['success' => 'Supprimé avec succées!']);
-        }else{
-            //redirect dengan pesan error
-            return redirect()->route('location.index')->with(['error' => 'Erreur']);
-        }
+        //
     }
 }

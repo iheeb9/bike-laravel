@@ -1,10 +1,27 @@
-@extends('layouts/contentNavbarLayout')
+@extends('Client/layouts/Client_commonMaster')
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-<script src="{{ asset('assets/Client/js/jquery.min.js') }}"></script>
-@section('title', ' Horizontal Layouts - Forms')
+<link rel="stylesheet" href="{{ asset(mix('assets/vendor/fonts/boxicons.css')) }}" />
 
+<!-- Core CSS -->
+<link rel="stylesheet" href="{{ asset(mix('assets/vendor/css/core.css')) }}" />
+<link rel="stylesheet" href="{{ asset(mix('assets/vendor/css/theme-default.css')) }}" />
+<link rel="stylesheet" href="{{ asset(mix('assets/css/demo.css')) }}" />
+
+<link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
+
+<!-- Vendor Styles -->
+@yield('vendor-style')
+<style>
+    #navigation{
+        display: none;
+    }
+    </style>
 @section('content')
-<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Balade/</span> Modifier Balade</h4>
+<div class="container">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Balade/</span> Modifier Balade</h4>
 
 <!-- Basic Layout & Basic with Icons -->
 <div class="row">
@@ -15,20 +32,10 @@
 
       </div>
       <div class="card-body">
-        <form action="{{ route('location.update',$location->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('c_location.update',$location) }}" method="POST" enctype="multipart/form-data">
           @csrf
     @method('PUT')
-          <div class="row mb-3 ">
-            <label class="col-sm-2 col-form-label " for="Titre">Utilisateur</label>
-            <div class="col-sm-4">
-              <select class="form-select" name="user" id="billetterie" aria-label="Default select example">
-                <option selected value="{{$location->user_id->id }}">{{$location->user_id->name}} </option>
-                @foreach($ListUser as $user)
-              <option value="{{$user->id}}">{{$user->name}}</option>
-                @endforeach
-              </select>
-              <div class="alert-danger"> {{ $errors->first('user')}}</div>
-            </div>
+          <div class="row mb-3 ">     
             <label class="col-sm-2 col-form-label " for="Titre">Velo</label>
             <div class="col-sm-4">
               <select class="form-select" name="velo" id="billetterie" aria-label="Default select example">
@@ -65,5 +72,6 @@
   <div class="col-xxl-2">
 
   </div>
+</div>
 </div>
 @endsection

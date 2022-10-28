@@ -7,7 +7,9 @@
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Location</a></li>
+        @if(Illuminate\Support\Facades\Auth::check())
+        <li><a href="{{route('c_location.index')}}">Location</a></li>
+        @endif
         <li><a href="#">Evennement</a></li>
         <li><a href="#">Balade</a></li>
         <li><a href="#">Blog</a></li>

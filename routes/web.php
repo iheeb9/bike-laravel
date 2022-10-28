@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\Location\TrackingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +20,11 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($
 
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
   Route::resource('/location',\App\Http\Controllers\Location\LocationBackOfficeController::class);
+ Route::resource('tracking', TrackingController::class);
+ Route::get('/ajax/tracks', [TrackingController::class, 'ajax']);
+ Route::get('/test/{id}',  $controller_path . '\Location\TrackingController@showing');
+
+  Route::get('/ajax/track/{id}', [TrackingController::class, 'ajaxid']);
 
 
 });
@@ -29,6 +34,7 @@ Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
 Auth::routes();
 
+Route::resource('/c_location', \App\Http\Controllers\Location\client\locationFrontController::class);
 
 
 
