@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Balade;
 use App\Models\Review;
+use Dymantic\InstagramFeed\Exceptions\BadTokenException;
+use Dymantic\InstagramFeed\Mail\FeedRefreshFailed;
+use Dymantic\InstagramFeed\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Mail;
+use Exception;
 
 class ReviewFrontController extends Controller
 {
@@ -55,6 +61,9 @@ class ReviewFrontController extends Controller
       $post->save();
       return redirect()->route('clientreview.show',$request->review)->with('success','successsssssssssssss');
     }
+  protected $signature = 'instagram-feed:refresh {limit?}';
+
+  protected $description = 'Refreshes all the authorized feeds with an optional number of feed items';
 
     /**
      * Display the specified resource.
@@ -65,7 +74,10 @@ class ReviewFrontController extends Controller
   public function show(int $reviews)
 
   {
+
+
     $review=Review::find($reviews);
+
     $balades = Balade::find($review->balade_id);
     $posts = $review->posts;
     $wordCount = count($posts);

@@ -67,7 +67,6 @@ Route::controller(App\Http\Controllers\CategoryController::class)->group(functio
 Route::get('/', function () { return redirect('/home');});
 Route::get('/home', $controller_path . '\Client\Home\ClientHome@index')->name('home');
 Route::resource('clientbalade', \App\Http\Controllers\balade\client\balade_client::class);
-
 Route::resource('clientreview',\App\Http\Controllers\ReviewFrontController::class);
 Route::resource('clientpost',\App\Http\Controllers\PostController::class);
 
