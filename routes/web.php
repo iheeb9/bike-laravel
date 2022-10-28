@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Location\TrackingController;
 use App\Http\Controllers\TournoisController;
 use App\Http\Controllers\AssociationController;
 use App\Models\Evennement;
@@ -33,6 +34,13 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () use ($
     //*******-event admin  ******/
 
   Route::get('/home', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+  Route::resource('/location',\App\Http\Controllers\Location\LocationBackOfficeController::class);
+ Route::resource('tracking', TrackingController::class);
+ Route::get('/ajax/tracks', [TrackingController::class, 'ajax']);
+ Route::get('/test/{id}',  $controller_path . '\Location\TrackingController@showing');
+
+  Route::get('/ajax/track/{id}', [TrackingController::class, 'ajaxid']);
+
 
   Route::resource('review',\App\Http\Controllers\ReviewController::class);
 
@@ -96,6 +104,7 @@ Route::get('/detailsvelo/{velo_id}/details',[App\Http\Controllers\VeloController
 Route::get('/search',[App\Http\Controllers\VeloController::class, 'searchProduct']);
 //Route::get('/filtervelotByCategory/{idCategory}', 'filtervelotByCategory');
 
+Route::resource('/c_location', \App\Http\Controllers\Location\client\locationFrontController::class);
 
 
 //Route::view('/evennements', 'events.index', ['evennements' => $Array]);

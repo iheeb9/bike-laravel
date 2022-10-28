@@ -45,11 +45,23 @@
         }
       ]
     },
-	{
+
+    {
       "name": "Location",
-      "icon": "menu-icon tf-icons bx bx-collection",
-      "slug": "#",
-      "url": "#"
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "view-location-back",
+      "submenu": [
+        {
+          "url": "/admin/location",
+          "name": "List Location",
+          "slug": "view-location-back"
+        },
+        {
+          "url": "/admin/tracking",
+          "name": "Localisation",
+          "slug": "Tracking"
+        }
+      ]
     },
 	
 
