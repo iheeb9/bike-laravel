@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
      //  \App\Models\User::factory(1)->make();
 
         $this->call([
-          BaladeSeeder::class
+          BaladeSeeder::class,
+          ReviewSeeder::class
         ]);
 
     }

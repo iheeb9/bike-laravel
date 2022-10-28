@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "0bd1227047fd7e661096d776ee6a7062",
     "packages": [
         {
@@ -484,6 +485,64 @@
                 }
             ],
             "time": "2022-09-10T18:51:20+00:00"
+        },
+        {
+            "name": "dymantic/laravel-instagram-feed",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dymantic/laravel-instagram-feed.git",
+                "reference": "070ef48145f54c7b3a3fcea62fb8ef475d7bc56b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dymantic/laravel-instagram-feed/zipball/070ef48145f54c7b3a3fcea62fb8ef475d7bc56b",
+                "reference": "070ef48145f54c7b3a3fcea62fb8ef475d7bc56b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0.1",
+                "illuminate/config": "^7.0 | ^8.0 | ^9.0",
+                "illuminate/console": "^7.0 | ^8.0 | ^9.0",
+                "illuminate/database": "^7.0 | ^8.0 | ^9.0",
+                "illuminate/http": "^7.0 | ^8.0 | ^9.0",
+                "illuminate/mail": "^7.0 | ^8.0 | ^9.0",
+                "illuminate/support": "^7.0 | ^8.0 | ^9.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dymantic\\InstagramFeed\\InstagramFeedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dymantic\\InstagramFeed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Joyner",
+                    "email": "joyner.michael@gmail.com"
+                }
+            ],
+            "description": "Fetches the instagram feed for given authenticated profiles",
+            "support": {
+                "issues": "https://github.com/Dymantic/laravel-instagram-feed/issues",
+                "source": "https://github.com/Dymantic/laravel-instagram-feed/tree/v3.2.0"
+            },
+            "time": "2022-05-24T00:41:32+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1095,6 +1154,69 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "jorenvanhocht/laravel-share",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorenvh/laravel-share.git",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorenvh/laravel-share/zipball/86af334068038a840567ed62f2082fe3ac981476",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.13|^7.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jorenvh\\Share\\Providers\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Jorenvh\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jorenvh\\Share\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joren Van Hocht",
+                    "email": "joren@codeswitch.be",
+                    "homepage": "https://codeswitch.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optional package for Laravel to generate social share links.",
+            "homepage": "https://github.com/jorenvh/laravel-share",
+            "keywords": [
+                "laravel",
+                "share",
+                "social links",
+                "social share links"
+            ],
+            "support": {
+                "issues": "https://github.com/jorenvh/laravel-share/issues",
+                "source": "https://github.com/jorenvh/laravel-share/tree/4.2.0"
+            },
+            "time": "2022-02-11T17:20:09+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2438,6 +2560,133 @@
             "time": "2022-10-17T15:20:29+00:00"
         },
         {
+            "name": "phpfastcache/phpfastcache",
+            "version": "9.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPSocialNetwork/phpfastcache.git",
+                "reference": "718c022344aec5edbfd06ea25a1aca5c22ce8298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPSocialNetwork/phpfastcache/zipball/718c022344aec5edbfd06ea25a1aca5c22ce8298",
+                "reference": "718c022344aec5edbfd06ea25a1aca5c22ce8298",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.0",
+                "psr/cache": "^2.0||^3.0",
+                "psr/simple-cache": "^2.0||^3.0"
+            },
+            "conflict": {
+                "doctrine/couchdb": "<dev-master#9eeb9e5",
+                "solarium/solarium": "<6.1"
+            },
+            "require-dev": {
+                "ext-gettext": "*",
+                "jetbrains/phpstorm-stubs": "dev-master",
+                "league/climate": "^3.8",
+                "phpmd/phpmd": "@stable",
+                "phpstan/phpstan": "^1.5",
+                "squizlabs/php_codesniffer": "@stable"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "~3.0",
+                "doctrine/couchdb": "^dev-master#9eeb9e5",
+                "ext-apcu": "*",
+                "ext-cassandra": "*",
+                "ext-couchbase": "*",
+                "ext-couchbase_v3": "*",
+                "ext-intl": "*",
+                "ext-leveldb": "*",
+                "ext-memcache": "*",
+                "ext-memcached": "*",
+                "ext-mongodb": "*",
+                "ext-redis": "*",
+                "ext-sqlite": "*",
+                "ext-wincache": "*",
+                "ext-xcache": "*",
+                "google/cloud-firestore": "^1.20",
+                "mongodb/mongodb": "^1.9",
+                "phpfastcache/phpssdb": "~1.1.0",
+                "predis/predis": "^1.1",
+                "solarium/solarium": "~6.1",
+                "triagens/arangodb": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phpfastcache\\": "lib/Phpfastcache/",
+                    "Phpfastcache\\Tests\\": "tests/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Georges.L",
+                    "email": "contact@geolim4.com",
+                    "homepage": "https://github.com/Geolim4",
+                    "role": "Actual Project Manager/Developer"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPSocialNetwork/phpfastcache/graphs/contributors"
+                }
+            ],
+            "description": "PHP Abstract Cache Class - Reduce your database call using cache system. Phpfastcache handles a lot of drivers such as Apc(u), Cassandra, CouchBase, Couchdb, Mongodb, Files, (P)redis, Leveldb, Memcache(d), Ssdb, Sqlite, Wincache, Xcache, Zend Data Cache.",
+            "homepage": "https://www.phpfastcache.com",
+            "keywords": [
+                "ArangoDb",
+                "LevelDb",
+                "abstract",
+                "apc",
+                "apcu",
+                "cache",
+                "cache class",
+                "caching",
+                "cassandra",
+                "cookie",
+                "couchbase",
+                "couchdb",
+                "dynamodb",
+                "files cache",
+                "memcache",
+                "memcached",
+                "mongodb",
+                "mysql cache",
+                "pdo cache",
+                "php cache",
+                "predis",
+                "redis",
+                "solr",
+                "ssdb",
+                "wincache",
+                "xcache",
+                "zend",
+                "zend data cache",
+                "zend disk cache",
+                "zend memory cache",
+                "zend server"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPSocialNetwork/phpfastcache/issues",
+                "source": "https://github.com/PHPSocialNetwork/phpfastcache",
+                "wiki": "https://github.com/PHPSocialNetwork/phpfastcache/wiki"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/geolim4",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-06-09T18:54:13+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.9.0",
             "source": {
@@ -2511,6 +2760,55 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
+            },
+            "time": "2021-02-03T23:26:27+00:00"
         },
         {
             "name": "psr/container",
