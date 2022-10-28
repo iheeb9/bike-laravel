@@ -12,40 +12,57 @@
         </div>
     </div>
    
+
+    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
    
+
+
+
+
     <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Details</th>
-            <th width="280px">Action</th>
+            <th></th>
         </tr>
         @foreach ($associationList as $association)
         <tr>
-            <td>{{ $association->id }}</td>
+        <td>{{ $association->id }}</td>
             <td>{{ $association->nom }}</td>
-            <td>ggg</td>
             <td>
             <form action="{{ route('association.destroy',$association->id) }}" method="POST">
-   
-   <a class="btn btn-info" href="{{ route('association.show',$association->id) }}">Show</a>
-
-   <a class="btn btn-primary" href="{{ route('association.edit',$association->id) }}">Edit</a>
-
-   @csrf
+            <a class="btn btn-info" href="{{ route('association.show',$association->id) }}">Show ss</a>
+            </form>
+            </td>
+            <td>
+            <form action="{{ route('association.destroy',$association->id) }}" method="POST">
+            <a class="btn btn-primary" href="{{ route('association.edit',$association->id) }}">Edit</a>
+            </form>
+            </td>
+            <td>
+            <form action="{{ route('association.destroy',$association->id) }}" method="POST">
+            @csrf
    @method('DELETE')
-
    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+   </form>
             </td>
         </tr>
         @endforeach
     </table>
+
+
+
+
+
+
+
+
+  
   
  
       
