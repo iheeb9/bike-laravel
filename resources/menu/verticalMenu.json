@@ -55,10 +55,16 @@
 
 	
 	{
-      "name": "Assosiation",
+      "name": "Assosiations",
       "icon": "menu-icon tf-icons bx bx-collection",
       "slug": "#",
-      "url": "#"
+      "url": "/admin/association"
+    },
+    {
+      "name": "tournois",
+      "icon": "menu-icon tf-icons bx bx-collection",
+      "slug": "#",
+      "url": "/admin/tournois"
     },
 	{
       "name": "Review",

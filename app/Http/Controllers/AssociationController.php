@@ -27,7 +27,6 @@ class AssociationController extends Controller
     public function index()
     {
         $associationList = Associations::latest()->paginate(5);
-      
         return view('associations.index',compact('associationList'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -69,7 +68,8 @@ class AssociationController extends Controller
      */
     public function show(Associations $association)
     {
-        return view('association.show',compact('association'));
+        $tournoisList = $association->tournoit;
+        return view('associations.show',compact('association','tournoisList'));
     }
 
     /**
@@ -110,6 +110,7 @@ class AssociationController extends Controller
      */
     public function destroy(Associations $association)
     {
+        $association->Tournoit()->delete();
         $association->delete();
        
         return redirect()->route('association.index')

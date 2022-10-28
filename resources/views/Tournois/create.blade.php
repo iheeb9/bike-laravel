@@ -7,12 +7,17 @@
         <div class="pull-left">
             <h2>Add New tournois</h2>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('tournois.index') }}"> Back</a>
-        </div>
+
     </div>
 </div>
    
+
+<div class="">
+<div class="col-6">
+<div class="card mb-4 " > 
+<h5 class="card-header">  
+    <a href="{{ route('tournois.index') }}" class="btn btn-primary btn-md"  float-start >Tournois  list</a></h5>
+<div class="card-body demo-vertical-spacing demo-only-element" > 
 @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -28,24 +33,41 @@
     @csrf
   
      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
+        <div class="col">
+            <div class="form-group pt-3">
                 <strong>Name:</strong>
                 <input required type="text" name="nom" class="form-control" placeholder="Name">
             </div>
-
-            <div class="form-group">
-                <select name="association->id" id="association" class="form-control">
+            <div class="form-group pt-3">
+                <strong>Date:</strong>
+                <input required type="date" name="date" class="form-control" placeholder="date">
+            </div>
+            <div class="form-group pt-3">
+            <strong>Association :</strong>
+                <select name="associationId" id="association" class="form-control">
                     <option value="">Select Association</option>
-                    @foreach ($associations as $association)
+                    @foreach ($associationsList as $association)
                         <option value="{{ $association->id }}">{{ $association->nom }}</option>
                     @endforeach
+                    </select>
          
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <div class="row pt-3  float-start">
+        <div class="text-center">
+                <button type="submit" class="btn  btn-primary">Submit</button>
+        </div>
         </div>
     </div>
    
 </form>
 @endsection
+</div>
+</div>
+</div>
+</div>
+   
+
+
+
+

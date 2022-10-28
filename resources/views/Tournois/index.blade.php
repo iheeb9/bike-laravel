@@ -22,26 +22,29 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Details</th>
-            <th width="280px">Action</th>
+            <th>Date</th>
         </tr>
         @foreach ($tournoisList as $tournois)
         <tr>
             <td>{{ $tournois->id }}</td>
             <td>{{ $tournois->nom }}</td>
-            <td>ggg</td>
+            <td>{{ $tournois->date }} </td>
             <td>
             <form action="{{ route('tournois.destroy',$tournois->id) }}" method="POST">
-   
-   <a class="btn btn-info" href="{{ route('tournois.show',$tournois->id) }}">Show</a>
-
-   <a class="btn btn-primary" href="{{ route('tournois.edit',$tournois->id) }}">Edit</a>
-
-   @csrf
+            <a class="btn btn-info" href="{{ route('tournois.show',$tournois->id) }}">Show</a>
+            </form>
+            </td>
+            <td>
+            <form action="{{ route('tournois.destroy',$tournois->id) }}" method="POST">
+            <a class="btn btn-primary" href="{{ route('tournois.edit',$tournois->id) }}">Edit</a>
+            </form>
+            </td>
+            <td>
+            <form action="{{ route('tournois.destroy',$tournois->id) }}" method="POST">
+            @csrf
    @method('DELETE')
-
    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
+   </form>
             </td>
         </tr>
         @endforeach

@@ -4,14 +4,18 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Event</h2>
+                <h2>Edit association </h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('association.index') }}"> Back</a>
-            </div>
+
         </div>
     </div>
    
+
+    <div class="col-6">
+<div class="card mb-4 " > 
+<h5 class="card-header">  
+    <a href="{{ route('association.index') }}" class="btn btn-primary btn-md  float-start ">Associations list</a></h5>
+<div class="card-body demo-vertical-spacing demo-only-element" > 
     @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -35,10 +39,14 @@
                 </div>
             </div>
     
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="pt-3">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
    
     </form>
 @endsection
+</div>
+</div>
+</div>
+   

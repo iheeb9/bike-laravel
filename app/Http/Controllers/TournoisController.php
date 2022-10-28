@@ -25,7 +25,7 @@ class TournoisController extends Controller
     public function index()
     {
         $tournoisList = Tournoit::latest()->paginate(10);
-        $associationsList = Associations::latest()->paginate(10);
+      
         return view('tournois.index',compact('tournoisList'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -37,7 +37,8 @@ class TournoisController extends Controller
      */
     public function create()
     {
-        return view('tournois.create');
+        $associationsList = Associations::all();
+        return view('tournois.create',compact('associationsList'));
     }
 
     /**
@@ -48,7 +49,7 @@ class TournoisController extends Controller
      */
     public function store(Request $request)
     {
-     //   dd( $request->input('date'));
+       // dd( $request->all());
 
         $request->validate([
             'nom' => 'required',
@@ -58,12 +59,14 @@ class TournoisController extends Controller
         $t=Tournoit::create([
             'nom' => $request->nom,
             'date' => $request->date,
-            'association_id' => $request->association_id,
+            'association_id' => $request->associationId,
         ]);
+       
        // Tournoit::create($t);
        
         return redirect()->route('tournois.index')
                         ->with('success','Event created successfully.');
+                         
     }
 
     /**
@@ -72,9 +75,10 @@ class TournoisController extends Controller
      * @param  \App\Models\Tournoit  
      * @return \Illuminate\Http\Response
      */
-    public function show(Tournoit $tournois)
+    public function show(Tournoit $tournoi)
     {
-        return view('tournois.show',compact('tournois'));
+        $association = Associations::find($tournoi->association_id);
+        return view('tournois.show',compact('tournoi','association'));
     }
 
     /**
@@ -83,9 +87,9 @@ class TournoisController extends Controller
      * @param  \App\Models\Tournoit  
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tournoit $tournois)
+    public function edit(Tournoit $tournoi)
     {
-        return view('tournois.edit',compact('tournois'));
+        return view('tournois.edit',compact('tournoi'));
     }
 
     /**
@@ -95,14 +99,15 @@ class TournoisController extends Controller
      * @param  \App\Models\Tournoit  
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournoit $tournois)
+    public function update(Request $request, Tournoit $tournoi)
     {
-        $request->validate([
+    
+      /*  $request->validate([
             'nom' => 'required',
             'date' => 'required',
         ]);
-      
-        $tournois->update($request->all());
+      */
+        $tournoi->update($request->all());
       
         return redirect()->route('tournois.index')
                         ->with('success','Event updated successfully');
@@ -114,9 +119,10 @@ class TournoisController extends Controller
      * @param  \App\Models\Tournoit  
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tournoit $tournois)
+    public function destroy(Tournoit $tournoi)
     {
-        $tournois->delete();
+        
+        $tournoi->delete();
        
         return redirect()->route('tournois.index')
                         ->with('success','Event deleted successfully');
